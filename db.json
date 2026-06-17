@@ -213,8 +213,8 @@
       "team_away": "República Democrática del Congo",
       "group_stage": "Group K",
       "match_date": "2026-06-17T13:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
+      "actual_home_score": 1,
+      "actual_away_score": 1,
       "status": "scheduled"
     },
     {
