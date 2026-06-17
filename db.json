@@ -556,98 +556,98 @@
         },
         {
           "match_id": "m11",
-          "predicted_home_score": 2,
-          "predicted_away_score": 1,
-          "points_earned": 1
+          "predicted_home_score": 1,
+          "predicted_away_score": 2,
+          "points_earned": 0
         },
         {
           "match_id": "m12",
-          "predicted_home_score": 3,
-          "predicted_away_score": 1,
+          "predicted_home_score": 1,
+          "predicted_away_score": 0,
           "points_earned": 1
         },
         {
           "match_id": "m13",
-          "predicted_home_score": 3,
-          "predicted_away_score": 1,
+          "predicted_home_score": 5,
+          "predicted_away_score": 0,
           "points_earned": 0
         },
         {
           "match_id": "m14",
           "predicted_home_score": 2,
-          "predicted_away_score": 0,
-          "points_earned": 0
-        },
-        {
-          "match_id": "m15",
-          "predicted_home_score": 3,
           "predicted_away_score": 1,
           "points_earned": 0
         },
         {
-          "match_id": "m16",
-          "predicted_home_score": 2,
-          "predicted_away_score": 0,
+          "match_id": "m15",
+          "predicted_home_score": 1,
+          "predicted_away_score": 2,
           "points_earned": 0
         },
         {
-          "match_id": "m17",
+          "match_id": "m16",
           "predicted_home_score": 1,
-          "predicted_away_score": 3,
-          "points_earned": 0
+          "predicted_away_score": 1,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m17",
+          "predicted_home_score": 3,
+          "predicted_away_score": 1,
+          "points_earned": 2
         },
         {
           "match_id": "m18",
           "predicted_home_score": 1,
-          "predicted_away_score": 4,
-          "points_earned": 2
+          "predicted_away_score": 1,
+          "points_earned": 0
         },
         {
           "match_id": "m19",
           "predicted_home_score": 2,
-          "predicted_away_score": 2,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m20",
           "predicted_home_score": 1,
-          "predicted_away_score": 4,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m21",
-          "predicted_home_score": 2,
-          "predicted_away_score": 1,
+          "predicted_home_score": 3,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m22",
           "predicted_home_score": 2,
-          "predicted_away_score": 2,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m23",
-          "predicted_home_score": 2,
+          "predicted_home_score": 0,
           "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m24",
-          "predicted_home_score": 1,
+          "predicted_home_score": 0,
           "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m25",
           "predicted_home_score": 1,
-          "predicted_away_score": 1,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m26",
-          "predicted_home_score": 2,
-          "predicted_away_score": 2,
+          "predicted_home_score": 1,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
@@ -658,14 +658,14 @@
         },
         {
           "match_id": "m28",
-          "predicted_home_score": 1,
-          "predicted_away_score": 2,
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m29",
           "predicted_home_score": 3,
-          "predicted_away_score": 0,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
@@ -677,13 +677,13 @@
         {
           "match_id": "m31",
           "predicted_home_score": 4,
-          "predicted_away_score": 0,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m32",
           "predicted_home_score": 1,
-          "predicted_away_score": 2,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
@@ -694,7 +694,7 @@
         },
         {
           "match_id": "m34",
-          "predicted_home_score": 2,
+          "predicted_home_score": 3,
           "predicted_away_score": 1,
           "points_earned": null
         },
