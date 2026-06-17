@@ -89,7 +89,7 @@ export default function PredictionWorkspace({
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/25">
         <div>
-          <h2 className="text-xl font-bold text-slate-800 tracking-wide">Predictions Grid</h2>
+          <h2 className="text-xl font-bold text-slate-100 tracking-wide">Predictions Grid</h2>
           <p className="text-xs text-slate-505 font-semibold uppercase tracking-wider text-emerald-600">
             View & edit all participant predictions in real-time
           </p>
@@ -148,7 +148,7 @@ export default function PredictionWorkspace({
               placeholder="Search teams or groups..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500/80 shadow-inner"
+              className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-100 focus:outline-none focus:border-emerald-500/80 shadow-inner"
             />
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function PredictionWorkspace({
 
       {/* Unified Grid Table Scroll Wrapper */}
       <div className="overflow-x-auto border border-slate-200/80 rounded-2xl shadow-inner max-h-[580px] overflow-y-auto custom-scrollbar">
-        <table className="w-full border-collapse text-left text-xs text-slate-800">
+        <table className="w-full border-collapse text-left text-xs text-slate-100">
           
           {/* Sticky Table Header */}
           <thead className="sticky top-0 bg-slate-50 border-b border-slate-200/80 z-20 shadow-sm">
@@ -209,7 +209,7 @@ export default function PredictionWorkspace({
                       </span>
                     </div>
                     
-                    <div className="font-bold text-slate-800 flex items-center justify-between gap-1">
+                    <div className="font-bold text-slate-100 flex items-center justify-between gap-1">
                       <span className="truncate">{match.team_home} vs {match.team_away}</span>
                     </div>
 
@@ -295,7 +295,7 @@ export default function PredictionWorkspace({
                             className={`w-7 h-7 text-center font-bold font-mono text-xs bg-slate-50 border rounded-lg focus:outline-none focus:border-emerald-500 transition-all ${
                               isCellEdited 
                                 ? 'border-amber-400 text-amber-600 bg-amber-50/40 shadow-inner' 
-                                : 'border-slate-200 text-slate-800 hover:border-slate-300'
+                                : 'border-slate-200 text-slate-100 hover:border-slate-300'
                             }`}
                           />
                           <span className="text-slate-400 font-mono">-</span>
@@ -311,7 +311,7 @@ export default function PredictionWorkspace({
                             className={`w-7 h-7 text-center font-bold font-mono text-xs bg-slate-50 border rounded-lg focus:outline-none focus:border-emerald-500 transition-all ${
                               isCellEdited 
                                 ? 'border-amber-400 text-amber-600 bg-amber-50/40 shadow-inner' 
-                                : 'border-slate-200 text-slate-800 hover:border-slate-300'
+                                : 'border-slate-200 text-slate-100 hover:border-slate-300'
                             }`}
                           />
                         </div>
