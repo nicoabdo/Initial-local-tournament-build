@@ -77,7 +77,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
       const userPredictions = Object.keys(userEdits)
         .filter(matchId => {
           const m = db.matches.find(match => match.id === matchId);
-          return m && m.status === "scheduled";
+          return !!m;
         })
         .map(matchId => ({
           match_id: matchId,
