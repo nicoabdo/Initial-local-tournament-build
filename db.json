@@ -2188,7 +2188,7 @@
     {
       "id": "abuelo",
       "name": "ABUELO",
-      "total_points": 2,
+      "total_points": 10,
       "betting_scores": [
         {
           "match_id": "m13",
@@ -2333,6 +2333,78 @@
           "predicted_home_score": 1,
           "predicted_away_score": 3,
           "points_earned": null
+        },
+        {
+          "match_id": "m1",
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m2",
+          "predicted_home_score": 1,
+          "predicted_away_score": 0,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m3",
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m4",
+          "predicted_home_score": 1,
+          "predicted_away_score": 1,
+          "points_earned": 0
+        },
+        {
+          "match_id": "m5",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m6",
+          "predicted_home_score": 3,
+          "predicted_away_score": 1,
+          "points_earned": 0
+        },
+        {
+          "match_id": "m7",
+          "predicted_home_score": 1,
+          "predicted_away_score": 2,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m8",
+          "predicted_home_score": 0,
+          "predicted_away_score": 1,
+          "points_earned": 0
+        },
+        {
+          "match_id": "m9",
+          "predicted_home_score": 4,
+          "predicted_away_score": 0,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m10",
+          "predicted_home_score": 1,
+          "predicted_away_score": 1,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m11",
+          "predicted_home_score": 1,
+          "predicted_away_score": 2,
+          "points_earned": 0
+        },
+        {
+          "match_id": "m12",
+          "predicted_home_score": 2,
+          "predicted_away_score": 0,
+          "points_earned": 1
         }
       ]
     },
