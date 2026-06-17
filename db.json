@@ -215,7 +215,7 @@
       "match_date": "2026-06-17T13:00:00Z",
       "actual_home_score": 1,
       "actual_away_score": 1,
-      "status": "scheduled"
+      "status": "finished"
     },
     {
       "id": "m22",
@@ -858,7 +858,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -1297,7 +1297,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -1736,7 +1736,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -2175,7 +2175,7 @@
           "match_id": "m21",
           "predicted_home_score": 4,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -2614,7 +2614,7 @@
           "match_id": "m21",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -3053,7 +3053,7 @@
           "match_id": "m21",
           "predicted_home_score": 4,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -3492,7 +3492,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -3931,7 +3931,7 @@
           "match_id": "m21",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -4370,7 +4370,7 @@
           "match_id": "m21",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -4809,7 +4809,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -5248,7 +5248,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -5687,7 +5687,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -6126,7 +6126,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -6565,7 +6565,7 @@
           "match_id": "m21",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -7004,7 +7004,7 @@
           "match_id": "m21",
           "predicted_home_score": 4,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -7443,7 +7443,7 @@
           "match_id": "m21",
           "predicted_home_score": 3,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
@@ -7882,7 +7882,7 @@
           "match_id": "m21",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m22",
