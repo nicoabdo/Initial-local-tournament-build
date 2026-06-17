@@ -4686,14 +4686,14 @@
         },
         {
           "match_id": "m11",
-          "predicted_home_score": 1,
-          "predicted_away_score": 1,
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
           "points_earned": 0
         },
         {
           "match_id": "m12",
-          "predicted_home_score": 2,
-          "predicted_away_score": 1,
+          "predicted_home_score": 3,
+          "predicted_away_score": 0,
           "points_earned": 1
         },
         {
@@ -4711,43 +4711,43 @@
         {
           "match_id": "m15",
           "predicted_home_score": 1,
-          "predicted_away_score": 1,
-          "points_earned": 2
+          "predicted_away_score": 2,
+          "points_earned": 0
         },
         {
           "match_id": "m16",
           "predicted_home_score": 2,
-          "predicted_away_score": 0,
+          "predicted_away_score": 1,
           "points_earned": 0
         },
         {
           "match_id": "m17",
-          "predicted_home_score": 1,
-          "predicted_away_score": 2,
-          "points_earned": 0
+          "predicted_home_score": 3,
+          "predicted_away_score": 1,
+          "points_earned": 2
         },
         {
           "match_id": "m18",
           "predicted_home_score": 0,
-          "predicted_away_score": 2,
+          "predicted_away_score": 3,
           "points_earned": 1
         },
         {
           "match_id": "m19",
-          "predicted_home_score": 2,
+          "predicted_home_score": 3,
           "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m20",
-          "predicted_home_score": 1,
-          "predicted_away_score": 3,
+          "predicted_home_score": 2,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m21",
-          "predicted_home_score": 1,
-          "predicted_away_score": 1,
+          "predicted_home_score": 3,
+          "predicted_away_score": 0,
           "points_earned": null
         },
         {
