@@ -36,6 +36,7 @@ export default function PredictionWorkspace({
 }: PredictionWorkspaceProps) {
   const [stageFilter, setStageFilter] = useState<"all" | "group" | "knockout">("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [overrideUnlock, setOverrideUnlock] = useState(false);
 
   // Sort users by points descending (leaderboard order) for standard presentation
   const sortedUsers = [...users].sort((a, b) => b.total_points - a.total_points);
@@ -114,16 +115,42 @@ export default function PredictionWorkspace({
           ))}
         </div>
 
-        {/* Search Input */}
-        <div className="relative w-full sm:w-64">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Search teams or groups..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500/80 shadow-inner"
-          />
+        {/* Right side: Lock Toggle & Search */}
+        <div className="flex flex-col sm:flex-row gap-3 items-center w-full sm:w-auto">
+          {/* Lock / Unlock Toggle Button */}
+          <button
+            type="button"
+            onClick={() => setOverrideUnlock(!overrideUnlock)}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer w-full sm:w-auto justify-center ${
+              overrideUnlock 
+                ? "bg-red-50 text-red-600 border-red-200 hover:bg-red-100/60 shadow-sm" 
+                : "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-250/60"
+            }`}
+          >
+            {overrideUnlock ? (
+              <>
+                <Unlock className="w-3.5 h-3.5 text-red-500" />
+                <span>Grid Unlocked</span>
+              </>
+            ) : (
+              <>
+                <Lock className="w-3.5 h-3.5 text-slate-500" />
+                <span>Grid Locked (Standard)</span>
+              </>
+            )}
+          </button>
+
+          {/* Search Input */}
+          <div className="relative w-full sm:w-56">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search teams or groups..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500/80 shadow-inner"
+            />
+          </div>
         </div>
       </div>
 
@@ -166,7 +193,7 @@ export default function PredictionWorkspace({
           {/* Table Body */}
           <tbody className="divide-y divide-slate-100 bg-white">
             {filteredMatches.map(match => {
-              const isLocked = match.status === "finished" || match.status === "live";
+              const isLocked = (match.status === "finished" || match.status === "live") && !overrideUnlock;
 
               return (
                 <tr key={match.id} className="hover:bg-slate-50/50 transition-colors group">

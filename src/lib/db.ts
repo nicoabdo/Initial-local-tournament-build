@@ -237,7 +237,7 @@ export function savePredictions(userId: string, predictions: { match_id: string;
 
   predictions.forEach(pred => {
     const match = db.matches.find(m => m.id === pred.match_id);
-    if (match && match.status === 'scheduled') {
+    if (match) {
       const existingPredIndex = user.betting_scores.findIndex(p => p.match_id === pred.match_id);
       const predictionObj: Prediction = {
         match_id: pred.match_id,
@@ -267,7 +267,7 @@ export function saveAllPredictions(allPredictions: Record<string, { match_id: st
     const predictions = allPredictions[userId];
     predictions.forEach(pred => {
       const match = db.matches.find(m => m.id === pred.match_id);
-      if (match && match.status === 'scheduled') {
+      if (match) {
         const existingPredIndex = user.betting_scores.findIndex(p => p.match_id === pred.match_id);
         const predictionObj: Prediction = {
           match_id: pred.match_id,

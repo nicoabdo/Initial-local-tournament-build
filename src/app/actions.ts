@@ -12,7 +12,8 @@ export async function savePredictionsAction(
   userId: string,
   predictions: { match_id: string; home: number; away: number }[]
 ): Promise<Database> {
-  const updatedDb = savePredictions(userId, predictions);
+  savePredictions(userId, predictions);
+  const updatedDb = recalculatePoints();
   revalidatePath("/");
   return updatedDb;
 }
@@ -20,7 +21,8 @@ export async function savePredictionsAction(
 export async function saveAllPredictionsAction(
   allPredictions: Record<string, { match_id: string; home: number; away: number }[]>
 ): Promise<Database> {
-  const updatedDb = saveAllPredictions(allPredictions);
+  saveAllPredictions(allPredictions);
+  const updatedDb = recalculatePoints();
   revalidatePath("/");
   return updatedDb;
 }
