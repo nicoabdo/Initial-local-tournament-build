@@ -193,8 +193,8 @@
       "team_away": "Argelia",
       "group_stage": "Group J",
       "match_date": "2026-06-16T21:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
+      "actual_home_score": 3,
+      "actual_away_score": 0,
       "status": "scheduled"
     },
     {
