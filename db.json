@@ -203,8 +203,8 @@
       "team_away": "Jordania",
       "group_stage": "Group J",
       "match_date": "2026-06-16T00:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
+      "actual_home_score": 3,
+      "actual_away_score": 1,
       "status": "scheduled"
     },
     {
