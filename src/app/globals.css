@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+}
+
+@theme {
+  --color-slate-50: #111827;
+  --color-slate-100: #111827;
+  --color-slate-200: #374151;
+  --color-slate-300: #4b5563;
+  --color-slate-400: #6b7280;
+  --color-slate-500: #9ca3af;
+  --color-slate-600: #d1d5db;
+  --color-slate-700: #e5e7eb;
+  --color-slate-750: #e5e7eb;
+  --color-slate-800: #f3f4f6;
+  --color-slate-850: #f3f4f6;
+  --color-slate-900: #f9fafb;
+  --color-slate-950: #ffffff;
+
+  /* Redefining indigo (main blue/purple) to Bolivian Flag Red accent */
+  --color-indigo-50: #fef2f2;
+  --color-indigo-100: #fee2e2;
+  --color-indigo-200: #fecaca;
+  --color-indigo-300: #fca5a5;
+  --color-indigo-400: #f87171;
+  --color-indigo-500: #dc2626; /* Bolivian Red */
+  --color-indigo-600: #b91c1c;
+  --color-indigo-700: #991b1b;
+  --color-indigo-800: #7f1d1d;
+  --color-indigo-900: #450a0a;
+  --color-indigo-950: #450a0a;
+
+  /* Let's make sure emerald (the green accent) and amber (the yellow accent) look premium */
+  --color-emerald-500: #16a34a; /* Bolivian Green */
+  --color-emerald-600: #15803d;
+  --color-amber-500: #d97706; /* Bolivian Yellow/Amber */
+  --color-amber-600: #b45309;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+}
+
+body {
+  background: #ffffff;
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom horizontal scrollbar for tables on mobile */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism effects adjusted for solid white theme */
+.glass-panel {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
