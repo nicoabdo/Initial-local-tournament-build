@@ -12,6 +12,7 @@ interface AdminResultsPanelProps {
   matches: Match[];
   onUpdateMatch: (matchId: string, home: number | null, away: number | null, status: 'scheduled' | 'live' | 'finished') => Promise<void>;
   onRecalculate: () => Promise<void>;
+  onAddUser: (name: string) => Promise<void>;
   onDeleteUser: (userId: string) => Promise<void>;
 }
 
@@ -20,6 +21,7 @@ export default function AdminResultsPanel({
   matches,
   onUpdateMatch,
   onRecalculate,
+  onAddUser,
   onDeleteUser
 }: AdminResultsPanelProps) {
   // Local state for admin inputs (keyed by matchId)
@@ -32,6 +34,19 @@ export default function AdminResultsPanel({
   const [userToDelete, setUserToDelete] = useState<User | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showManageParticipants, setShowManageParticipants] = useState(false);
+  
+  // State for user creation inside admin panel
+  const [newUserName, setNewUserName] = useState("");
+  const [isAddingUser, setIsAddingUser] = useState(false);
+
+  const handleAddUserSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newUserName.trim()) return;
+    setIsAddingUser(true);
+    await onAddUser(newUserName);
+    setNewUserName("");
+    setIsAddingUser(false);
+  };
 
   // Sync matches with local form states
   useEffect(() => {
@@ -177,8 +192,28 @@ export default function AdminResultsPanel({
         </button>
 
         {showManageParticipants && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-2 border-t border-slate-800/40 animate-in fade-in duration-200">
-            {users.length > 0 ? (
+          <div className="flex flex-col gap-4 pt-2 border-t border-slate-800/40 animate-in fade-in duration-200">
+            {/* Inline Add Participant Form */}
+            <form onSubmit={handleAddUserSubmit} className="flex flex-col sm:flex-row gap-2 items-center bg-slate-950/40 border border-slate-900 p-3 rounded-xl">
+              <input
+                type="text"
+                required
+                placeholder="New participant name..."
+                value={newUserName}
+                onChange={(e) => setNewUserName(e.target.value)}
+                className="w-full sm:flex-1 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-500/50"
+              />
+              <button
+                type="submit"
+                disabled={isAddingUser}
+                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 disabled:bg-slate-800 text-slate-50 font-bold px-4 py-1.5 rounded-lg text-xs transition-colors cursor-pointer"
+              >
+                {isAddingUser ? "Adding..." : "Add Participant"}
+              </button>
+            </form>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {users.length > 0 ? (
               users.map(u => (
                 <div 
                   key={u.id} 
@@ -203,7 +238,8 @@ export default function AdminResultsPanel({
               </div>
             )}
           </div>
-        )}
+        </div>
+      )}
       </div>
 
       {/* Sub-Filters Tabs */}

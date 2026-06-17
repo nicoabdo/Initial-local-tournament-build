@@ -9,14 +9,14 @@ import AdminResultsPanel from "@/components/AdminResultsPanel";
 import SettingsPanel from "@/components/SettingsPanel";
 import MatchAnalytics from "@/components/MatchAnalytics";
 import { 
-  savePredictionsAction, 
+  saveAllPredictionsAction, 
   updateMatchScoreAction, 
   updateSettingsAction, 
   recalculatePointsAction,
   createNewUserAction,
   deleteUserAction
 } from "./actions";
-import { Trophy, Compass, Award, ShieldAlert, Sparkles, RefreshCw, Eye, ExternalLink } from "lucide-react";
+import { Trophy, Compass, Award, ShieldAlert, Sparkles, RefreshCw, Eye, ExternalLink, BarChart3 } from "lucide-react";
 
 interface MainClientContainerProps {
   initialDb: Database;
@@ -28,8 +28,8 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
     initialDb.users.length > 0 ? initialDb.users[0].id : ""
   );
 
-  // Layout Tab: 'workspace' (User Prediction Workspace) | 'admin' (Admin Results Panel) | 'standings' (Family Standings)
-  const [activeTab, setActiveTab] = useState<"workspace" | "admin" | "standings">("workspace");
+  // Layout Tab: 'workspace' (User Prediction Workspace) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
+  const [activeTab, setActiveTab] = useState<"workspace" | "admin" | "standings" | "statistics">("workspace");
 
   // Centralized cache of unsaved predictions: Record<userId, Record<matchId, {home, away}>>
   const [unsavedChanges, setUnsavedChanges] = useState<Record<string, Record<string, { home: number; away: number }>>>({});
@@ -38,72 +38,62 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [globalLoading, setGlobalLoading] = useState(false);
 
-  const activeUser = db.users.find(u => u.id === activeUserId) || db.users[0];
-
-  // Helper to get active user's current edits
-  const activeUserEdits = unsavedChanges[activeUserId] || {};
-
-  // Check if active user has unsaved changes
-  const hasChanges = (() => {
-    if (!activeUser) return false;
-    return Object.keys(activeUserEdits).some(matchId => {
-      const edit = activeUserEdits[matchId];
-      const saved = activeUser.betting_scores.find(p => p.match_id === matchId);
-      const savedHome = saved ? saved.predicted_home_score : 0;
-      const savedAway = saved ? saved.predicted_away_score : 0;
-      return edit.home !== savedHome || edit.away !== savedAway;
-    });
-  })();
-
-  // Handler for player predictions stepper adjustments
-  const handlePredChange = (matchId: string, team: "home" | "away", val: number) => {
+  // Handler for player predictions grid adjustments
+  const handlePredChange = (userId: string, matchId: string, team: "home" | "away", val: number) => {
     const newVal = Math.max(0, val);
-    const saved = activeUser?.betting_scores.find(p => p.match_id === matchId);
+    const user = db.users.find(u => u.id === userId);
+    if (!user) return;
+    
+    const userEdits = unsavedChanges[userId] || {};
+    const saved = user.betting_scores.find(p => p.match_id === matchId);
     
     const baseHome = saved ? saved.predicted_home_score : 0;
     const baseAway = saved ? saved.predicted_away_score : 0;
 
-    const currentHome = activeUserEdits[matchId] ? activeUserEdits[matchId].home : baseHome;
-    const currentAway = activeUserEdits[matchId] ? activeUserEdits[matchId].away : baseAway;
+    const currentHome = userEdits[matchId] ? userEdits[matchId].home : baseHome;
+    const currentAway = userEdits[matchId] ? userEdits[matchId].away : baseAway;
 
     const updatedHome = team === "home" ? newVal : currentHome;
     const updatedAway = team === "away" ? newVal : currentAway;
 
     setUnsavedChanges({
       ...unsavedChanges,
-      [activeUserId]: {
-        ...activeUserEdits,
+      [userId]: {
+        ...userEdits,
         [matchId]: { home: updatedHome, away: updatedAway }
       }
     });
   };
 
-  // Handler for saving predictions
+  // Handler for saving all predictions globally
   const handleSavePredictions = async () => {
-    if (!activeUser) return;
     setIsSaving(true);
     
-    // Package edits to save (only for scheduled open matches)
-    const predictionsToSave = Object.keys(activeUserEdits)
-      .filter(matchId => {
-        const m = db.matches.find(match => match.id === matchId);
-        return m && m.status === "scheduled";
-      })
-      .map(matchId => ({
-        match_id: matchId,
-        home: activeUserEdits[matchId].home,
-        away: activeUserEdits[matchId].away
-      }));
+    // Package edits for all users (only for scheduled open matches)
+    const packagedEdits: Record<string, { match_id: string; home: number; away: number }[]> = {};
+    
+    Object.keys(unsavedChanges).forEach(userId => {
+      const userEdits = unsavedChanges[userId];
+      const userPredictions = Object.keys(userEdits)
+        .filter(matchId => {
+          const m = db.matches.find(match => match.id === matchId);
+          return m && m.status === "scheduled";
+        })
+        .map(matchId => ({
+          match_id: matchId,
+          home: userEdits[matchId].home,
+          away: userEdits[matchId].away
+        }));
+        
+      if (userPredictions.length > 0) {
+        packagedEdits[userId] = userPredictions;
+      }
+    });
 
     try {
-      const updated = await savePredictionsAction(activeUserId, predictionsToSave);
+      const updated = await saveAllPredictionsAction(packagedEdits);
       setDb(updated);
-      
-      // Clear unsaved cache for this user since they are persisted now
-      const newUnsaved = { ...unsavedChanges };
-      delete newUnsaved[activeUserId];
-      setUnsavedChanges(newUnsaved);
-
+      setUnsavedChanges({});
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 3000);
     } catch (error) {
@@ -293,6 +283,17 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
               <Trophy className="w-4 h-4" />
               Standings
             </button>
+            <button
+              onClick={() => setActiveTab("statistics")}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer ${
+                activeTab === "statistics"
+                  ? "bg-teal-500 text-slate-50 shadow-lg shadow-teal-500/10"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <BarChart3 className="w-4 h-4" />
+              Statistics
+            </button>
           </div>
 
           <Link
@@ -314,14 +315,11 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
               <PredictionWorkspace
                 users={db.users}
                 matches={db.matches}
-                activeUserId={activeUserId}
-                setActiveUserId={setActiveUserId}
-                localEdits={activeUserEdits}
+                pointStructure={db.settings.pointStructure}
+                unsavedChanges={unsavedChanges}
                 onPredChange={handlePredChange}
                 onSavePredictions={handleSavePredictions}
-                onAddUser={handleAddUser}
-                onDeleteUser={handleDeleteUser}
-                hasChanges={hasChanges}
+                onClearLocalChanges={() => setUnsavedChanges({})}
                 isSaving={isSaving}
                 saveSuccess={saveSuccess}
               />
@@ -332,6 +330,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
                 matches={db.matches}
                 onUpdateMatch={handleUpdateMatch}
                 onRecalculate={handleRecalculate}
+                onAddUser={handleAddUser}
                 onDeleteUser={handleDeleteUser}
               />
             )}
@@ -342,12 +341,12 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
                 pointStructure={db.settings.pointStructure}
               />
             )}
-
-            {/* View D: Match Statistics & Analytics */}
-            <MatchAnalytics
-              users={db.users}
-              matches={db.matches}
-            />
+            {activeTab === "statistics" && (
+              <MatchAnalytics
+                users={db.users}
+                matches={db.matches}
+              />
+            )}
           </div>
 
           {/* Settings panel and options (Admin view only) */}

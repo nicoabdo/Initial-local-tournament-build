@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getDatabase, savePredictions, updateMatchScore, updateSettings, recalculatePoints, saveDatabase } from "@/lib/db";
+import { getDatabase, savePredictions, saveAllPredictions, updateMatchScore, updateSettings, recalculatePoints, saveDatabase } from "@/lib/db";
 import { PointStructure, Database, User } from "@/lib/types";
 
 export async function getDatabaseAction(): Promise<Database> {
@@ -13,6 +13,14 @@ export async function savePredictionsAction(
   predictions: { match_id: string; home: number; away: number }[]
 ): Promise<Database> {
   const updatedDb = savePredictions(userId, predictions);
+  revalidatePath("/");
+  return updatedDb;
+}
+
+export async function saveAllPredictionsAction(
+  allPredictions: Record<string, { match_id: string; home: number; away: number }[]>
+): Promise<Database> {
+  const updatedDb = saveAllPredictions(allPredictions);
   revalidatePath("/");
   return updatedDb;
 }

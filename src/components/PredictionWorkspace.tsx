@@ -1,23 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { User, Match, Prediction } from "@/lib/types";
+import { User, Match } from "@/lib/types";
 import { 
-  Users, UserPlus, Lock, Unlock, Calendar, Save, Plus, Minus, 
-  Check, RefreshCw, MapPin, AlertTriangle, ArrowRight, Trash2
+  Save, Check, RefreshCw, AlertTriangle, Search, Lock, Unlock, 
+  MapPin, Activity, CheckCircle
 } from "lucide-react";
 
 interface PredictionWorkspaceProps {
   users: User[];
   matches: Match[];
-  activeUserId: string;
-  setActiveUserId: (id: string) => void;
-  localEdits: Record<string, { home: number; away: number }>;
-  onPredChange: (matchId: string, team: "home" | "away", val: number) => void;
+  pointStructure: {
+    exact_match_points: number;
+    correct_outcome_points: number;
+    loss_points: number;
+  };
+  unsavedChanges: Record<string, Record<string, { home: number; away: number }>>;
+  onPredChange: (userId: string, matchId: string, team: "home" | "away", val: number) => void;
   onSavePredictions: () => Promise<void>;
-  onAddUser: (name: string) => Promise<void>;
-  onDeleteUser: (userId: string) => Promise<void>;
-  hasChanges: boolean;
+  onClearLocalChanges: () => void;
   isSaving: boolean;
   saveSuccess: boolean;
 }
@@ -25,348 +26,305 @@ interface PredictionWorkspaceProps {
 export default function PredictionWorkspace({
   users,
   matches,
-  activeUserId,
-  setActiveUserId,
-  localEdits,
+  pointStructure,
+  unsavedChanges,
   onPredChange,
   onSavePredictions,
-  onAddUser,
-  onDeleteUser,
-  hasChanges,
+  onClearLocalChanges,
   isSaving,
   saveSuccess
 }: PredictionWorkspaceProps) {
-  // Tabs for stage filtering
   const [stageFilter, setStageFilter] = useState<"all" | "group" | "knockout">("all");
-  
-  // State for user creation
-  const [newUserName, setNewUserName] = useState("");
-  const [showAddUserForm, setShowAddUserForm] = useState(false);
-  const [isAddingUser, setIsAddingUser] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // States for user deletion
-  const [userToDelete, setUserToDelete] = useState<User | null>(null);
-  const [isDeleting, setIsDeleting] = useState(false);
+  // Sort users by points descending (leaderboard order) for standard presentation
+  const sortedUsers = [...users].sort((a, b) => b.total_points - a.total_points);
 
-  const activeUser = users.find(u => u.id === activeUserId) || users[0];
-
-  // Filter matches based on stage selection
+  // Filter matches based on stage selection and search text
   const filteredMatches = matches.filter(match => {
-    if (stageFilter === "all") return true;
+    // 1. Stage filter
     const isKnockout = ["Round of 16", "Quarter-finals", "Semi-finals", "Final"].includes(match.group_stage);
-    if (stageFilter === "group") return !isKnockout;
-    return isKnockout;
+    if (stageFilter === "group" && isKnockout) return false;
+    if (stageFilter === "knockout" && !isKnockout) return false;
+
+    // 2. Search query (teams or group name)
+    if (searchQuery.trim() !== "") {
+      const query = searchQuery.toLowerCase();
+      const matchHome = match.team_home.toLowerCase();
+      const matchAway = match.team_away.toLowerCase();
+      const matchGroup = match.group_stage.toLowerCase();
+      return matchHome.includes(query) || matchAway.includes(query) || matchGroup.includes(query);
+    }
+
+    return true;
   });
 
-  const handleAddUserSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newUserName.trim()) return;
-    setIsAddingUser(true);
-    await onAddUser(newUserName);
-    setNewUserName("");
-    setShowAddUserForm(false);
-    setIsAddingUser(false);
-  };
+  // Check which users have unsaved edits
+  const modifiedUserIds = Object.keys(unsavedChanges).filter(userId => {
+    const user = users.find(u => u.id === userId);
+    if (!user) return false;
+    const userEdits = unsavedChanges[userId];
+    return Object.keys(userEdits).some(matchId => {
+      const edit = userEdits[matchId];
+      const saved = user.betting_scores.find(p => p.match_id === matchId);
+      const savedHome = saved ? saved.predicted_home_score : 0;
+      const savedAway = saved ? saved.predicted_away_score : 0;
+      return edit.home !== savedHome || edit.away !== savedAway;
+    });
+  });
 
-  const handleConfirmDelete = async () => {
-    if (!userToDelete) return;
-    setIsDeleting(true);
-    await onDeleteUser(userToDelete.id);
-    setIsDeleting(false);
-    setUserToDelete(null);
-  };
+  const hasChanges = modifiedUserIds.length > 0;
+  const modifiedNames = modifiedUserIds
+    .map(id => users.find(u => u.id === id)?.name)
+    .filter(Boolean)
+    .join(", ");
 
   return (
     <div className="glass-panel rounded-2xl p-6 shadow-xl relative overflow-hidden flex flex-col gap-6">
       
       {/* Decorative Glow */}
-      <div className="absolute top-0 left-0 -mt-12 -ml-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 left-0 -mt-12 -ml-12 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-      {/* Header and User Selection Dropdown */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-emerald-500/15 rounded-xl text-emerald-400">
-            <Users className="w-6 h-6" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold text-slate-100 tracking-wide">Predictions Workspace</h2>
-            <p className="text-xs text-slate-400">Cast your scores and compete with family</p>
-          </div>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/25">
+        <div>
+          <h2 className="text-xl font-bold text-slate-800 tracking-wide">Predictions Grid</h2>
+          <p className="text-xs text-slate-505 font-semibold uppercase tracking-wider text-emerald-600">
+            View & edit all participant predictions in real-time
+          </p>
         </div>
-
-        {/* Participant Switcher Dropdown */}
-        {activeUser && (
-          <div className="flex items-center gap-2 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2 shadow-inner">
-            <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Predictor:</span>
-            <select
-              value={activeUserId}
-              onChange={(e) => setActiveUserId(e.target.value)}
-              className="bg-transparent text-sm font-extrabold text-emerald-400 focus:outline-none cursor-pointer pr-1"
-            >
-              {users.map(u => (
-                <option key={u.id} value={u.id} className="bg-slate-900 text-slate-100">
-                  {u.name} ({u.total_points} pts)
-                </option>
-              ))}
-            </select>
-            <button 
-              onClick={() => setShowAddUserForm(!showAddUserForm)}
-              title="Add new family member"
-              className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-emerald-400 transition-colors ml-1"
-            >
-              <UserPlus className="w-4 h-4" />
-            </button>
-            <button 
-              type="button"
-              onClick={() => setUserToDelete(activeUser)}
-              title={`Delete ${activeUser.name}`}
-              className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-red-500 hover:text-red-400 transition-colors ml-1 cursor-pointer"
-            >
-              <Trash2 className="w-4 h-4" />
-            </button>
-          </div>
-        )}
       </div>
 
-      {/* Unsaved changes warning alert inside workspace */}
-      {hasChanges && (
-        <div className="bg-amber-500/10 border border-amber-500/20 p-3.5 rounded-xl flex items-center gap-3 animate-pulse">
-          <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />
-          <div className="text-xs text-slate-300">
-            <span className="font-bold text-amber-400">{activeUser?.name}</span> has unsaved changes. Switch profiles freely; edits are cached in memory, but make sure to save before reloading.
-          </div>
-        </div>
-      )}
-
-      {/* Add User Dropdown Panel */}
-      {showAddUserForm && (
-        <form onSubmit={handleAddUserSubmit} className="bg-slate-900/40 border border-slate-800 p-4 rounded-xl flex flex-col sm:flex-row gap-3 items-center animate-in slide-in-from-top-4 duration-200">
-          <div className="flex-1 w-full">
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1.5">New Family Member Name</label>
-            <input
-              type="text"
-              required
-              placeholder="e.g. Aunt Maria, cousin Alex..."
-              value={newUserName}
-              onChange={(e) => setNewUserName(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-850 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500/60"
-            />
-          </div>
-          <div className="flex gap-2 w-full sm:w-auto mt-5 sm:mt-0">
+      {/* Search and Filter Toolbar */}
+      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-100">
+        {/* Stage Filter Tab Buttons */}
+        <div className="flex bg-slate-200/60 p-1 rounded-xl border border-slate-300/30 w-full sm:w-auto">
+          {(["all", "group", "knockout"] as const).map(tab => (
             <button
-              type="submit"
-              disabled={isAddingUser}
-              className="flex-1 sm:flex-none bg-emerald-500 hover:bg-emerald-600 text-slate-550 font-bold px-4 py-2.5 rounded-xl text-sm transition-colors cursor-pointer"
-            >
-              {isAddingUser ? "Adding..." : "Add Member"}
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowAddUserForm(false)}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 px-4 py-2.5 rounded-xl text-sm transition-colors"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      )}
-
-      {/* Navigation Filter Tabs */}
-      <div className="flex border-b border-slate-800/40">
-        {(["all", "group", "knockout"] as const).map(tab => (
-          <button
-            key={tab}
-            onClick={() => setStageFilter(tab)}
-            className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] ${
-              stageFilter === tab 
-                ? "border-emerald-500 text-emerald-400 font-bold"
-                : "border-transparent text-slate-400 hover:text-slate-200"
-            }`}
-          >
-            {tab === "all" ? "All Matches" : tab === "group" ? "Group Stage" : "Knockout Stages"}
-          </button>
-        ))}
-      </div>
-
-      {/* Matches Grid List (Counter Cards) */}
-      <div className="space-y-4 max-h-[580px] overflow-y-auto pr-1 custom-scrollbar">
-        {filteredMatches.map(match => {
-          const isLocked = match.status === "finished" || match.status === "live";
-          
-          // Get values: first check unsaved localEdits, then fall back to saved db score, default to 0
-          const savedPred = activeUser?.betting_scores.find(p => p.match_id === match.id);
-          const currentPred = localEdits[match.id] || (savedPred 
-            ? { home: savedPred.predicted_home_score, away: savedPred.predicted_away_score }
-            : { home: 0, away: 0 }
-          );
-
-          // Check if this specific row is edited (unsaved)
-          const isRowEdited = savedPred 
-            ? (savedPred.predicted_home_score !== currentPred.home || savedPred.predicted_away_score !== currentPred.away)
-            : (currentPred.home !== 0 || currentPred.away !== 0);
-
-          return (
-            <div 
-              key={match.id}
-              className={`p-4 rounded-2xl transition-all duration-150 border flex flex-col gap-3 ${
-                isLocked 
-                  ? "bg-slate-950/40 border-slate-900/60 opacity-80" 
-                  : isRowEdited
-                    ? "bg-amber-500/5 border-amber-500/20 shadow-md shadow-amber-500/2"
-                    : "bg-slate-900/40 border-slate-800/80 hover:bg-slate-900/60"
+              key={tab}
+              onClick={() => setStageFilter(tab)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                stageFilter === tab 
+                  ? "bg-white text-emerald-600 shadow-sm"
+                  : "text-slate-550 hover:text-slate-850"
               }`}
             >
-              {/* Card Top Details */}
-              <div className="flex items-center justify-between text-[11px] text-slate-500 border-b border-slate-800/20 pb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-slate-400 font-semibold">{match.group_stage}</span>
-                  <span>•</span>
-                  <span>{new Date(match.match_date).toLocaleDateString([], { month: "short", day: "numeric" })}</span>
-                  <span>•</span>
-                  <span>{new Date(match.match_date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
-                </div>
-                {isRowEdited && (
-                  <span className="text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block animate-ping"></span> Unsaved Edits
-                  </span>
-                )}
-              </div>
+              {tab === "all" ? "All Matches" : tab === "group" ? "Group Stage" : "Knockouts"}
+            </button>
+          ))}
+        </div>
 
-              {/* Card Middle: Matchup Counter Layout */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-4 py-1">
-                
-                {/* Team Home Column */}
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-sm font-bold text-slate-200 text-center tracking-wide">{match.team_home}</span>
-                  
-                  {isLocked ? (
-                    <div className="font-extrabold text-xl font-mono text-slate-500 bg-slate-950/60 px-4 py-1 rounded-xl border border-slate-900">
-                      {currentPred.home}
-                    </div>
-                  ) : (
-                    /* Stepper Controls */
-                    <div className="flex items-center gap-2 bg-slate-950/60 p-1 rounded-xl border border-slate-800 shadow-inner">
-                      <button
-                        type="button"
-                        onClick={() => onPredChange(match.id, "home", currentPred.home - 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-lg bg-slate-850 hover:bg-slate-800 hover:text-emerald-400 text-slate-400 transition-colors"
-                        title="Decrease Home Score"
-                      >
-                        <Minus className="w-3.5 h-3.5" />
-                      </button>
-                      <span className="w-7 text-center font-black text-slate-100 text-base font-mono">
-                        {currentPred.home}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => onPredChange(match.id, "home", currentPred.home + 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-lg bg-slate-850 hover:bg-slate-800 hover:text-emerald-400 text-slate-400 transition-colors"
-                        title="Increase Home Score"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {/* Center Column: VS Separator & Status */}
-                <div className="flex flex-col items-center justify-center gap-1 py-2 sm:py-0 border-y sm:border-y-0 sm:border-x border-slate-800/30">
-                  {isLocked ? (
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="flex items-center gap-1 text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded text-slate-500 font-semibold uppercase tracking-wide">
-                        <Lock className="w-3 h-3 text-slate-600" /> Locked
-                      </div>
-                      
-                      {match.status === "finished" && (
-                        <div className="text-center mt-1">
-                          <span className="block text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Official Score</span>
-                          <span className="text-sm font-black text-emerald-400 font-mono">
-                            {match.actual_home_score} - {match.actual_away_score}
-                          </span>
-                        </div>
-                      )}
-                      {match.status === "live" && (
-                        <div className="text-center mt-1">
-                          <span className="block text-[9px] text-amber-500 uppercase tracking-wider font-bold animate-pulse">Live Now</span>
-                          <span className="text-sm font-black text-amber-400 font-mono">
-                            {match.actual_home_score} - {match.actual_away_score}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="flex items-center gap-1 text-[10px] bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded text-emerald-400 font-bold uppercase tracking-wide">
-                        <Unlock className="w-3 h-3 text-emerald-500" /> Open
-                      </div>
-                      <span className="text-xs text-slate-500 font-bold font-mono">VS</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Team Away Column */}
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-sm font-bold text-slate-200 text-center tracking-wide">{match.team_away}</span>
-                  
-                  {isLocked ? (
-                    <div className="font-extrabold text-xl font-mono text-slate-500 bg-slate-950/60 px-4 py-1 rounded-xl border border-slate-900">
-                      {currentPred.away}
-                    </div>
-                  ) : (
-                    /* Stepper Controls */
-                    <div className="flex items-center gap-2 bg-slate-950/60 p-1 rounded-xl border border-slate-800 shadow-inner">
-                      <button
-                        type="button"
-                        onClick={() => onPredChange(match.id, "away", currentPred.away - 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-lg bg-slate-850 hover:bg-slate-800 hover:text-emerald-400 text-slate-400 transition-colors"
-                        title="Decrease Away Score"
-                      >
-                        <Minus className="w-3.5 h-3.5" />
-                      </button>
-                      <span className="w-7 text-center font-black text-slate-100 text-base font-mono">
-                        {currentPred.away}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => onPredChange(match.id, "away", currentPred.away + 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-lg bg-slate-850 hover:bg-slate-800 hover:text-emerald-400 text-slate-400 transition-colors"
-                        title="Increase Away Score"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-              </div>
-
-              {/* Venue details */}
-              <div className="text-[10px] text-slate-500 flex items-center gap-1.5 mt-1">
-                <MapPin className="w-3.5 h-3.5 text-slate-600" />
-                <span>{match.venue || "TBD Stadium"}</span>
-              </div>
-            </div>
-          );
-        })}
+        {/* Search Input */}
+        <div className="relative w-full sm:w-64">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <input
+            type="text"
+            placeholder="Search teams or groups..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500/80 shadow-inner"
+          />
+        </div>
       </div>
 
-      {/* Floating Save Actions Footer */}
+      {/* Unsaved changes notice */}
       {hasChanges && (
-        <div className="bg-slate-950/90 border border-emerald-500/20 p-4 rounded-2xl flex items-center justify-between shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-300 relative overflow-hidden">
-          {/* Subtle background overlay */}
+        <div className="bg-amber-500/10 border border-amber-500/20 p-3.5 rounded-xl flex items-center gap-3">
+          <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
+          <div className="text-xs text-slate-700">
+            Unsaved changes detected for <span className="font-bold text-amber-600">{modifiedNames}</span>. Edits are cached locally in memory. Use the save button below to persist.
+          </div>
+        </div>
+      )}
+
+      {/* Unified Grid Table Scroll Wrapper */}
+      <div className="overflow-x-auto border border-slate-200/80 rounded-2xl shadow-inner max-h-[580px] overflow-y-auto custom-scrollbar">
+        <table className="w-full border-collapse text-left text-xs text-slate-800">
+          
+          {/* Sticky Table Header */}
+          <thead className="sticky top-0 bg-slate-50 border-b border-slate-200/80 z-20 shadow-sm">
+            <tr>
+              {/* Sticky first column header */}
+              <th className="sticky left-0 bg-slate-50 z-30 p-3 font-bold text-slate-600 min-w-[200px] border-r border-slate-200/60 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
+                Match Details
+              </th>
+              
+              {/* User columns */}
+              {sortedUsers.map(user => (
+                <th key={user.id} className="p-3 text-center min-w-[105px] border-r border-slate-200/30">
+                  <div className="font-extrabold text-slate-850 truncate max-w-[95px]" title={user.name}>
+                    {user.name}
+                  </div>
+                  <div className="text-[10px] text-emerald-650 font-bold mt-0.5">
+                    {user.total_points} pts
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+
+          {/* Table Body */}
+          <tbody className="divide-y divide-slate-100 bg-white">
+            {filteredMatches.map(match => {
+              const isLocked = match.status === "finished" || match.status === "live";
+
+              return (
+                <tr key={match.id} className="hover:bg-slate-50/50 transition-colors group">
+                  
+                  {/* Sticky First Column: Match Details */}
+                  <td className="sticky left-0 bg-white z-10 p-3 border-r border-slate-200/60 min-w-[200px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] group-hover:bg-slate-50">
+                    <div className="flex items-center justify-between text-[9px] text-slate-500 mb-1">
+                      <span className="font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold">
+                        {match.group_stage}
+                      </span>
+                      <span>
+                        {new Date(match.match_date).toLocaleDateString([], { month: "short", day: "numeric" })}
+                      </span>
+                    </div>
+                    
+                    <div className="font-bold text-slate-800 flex items-center justify-between gap-1">
+                      <span className="truncate">{match.team_home} vs {match.team_away}</span>
+                    </div>
+
+                    {/* Official / Live Match Scores */}
+                    {match.status === "finished" && (
+                      <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-650 mt-1">
+                        <CheckCircle className="w-3 h-3 text-emerald-500" />
+                        <span>FT: {match.actual_home_score} - {match.actual_away_score}</span>
+                      </div>
+                    )}
+                    {match.status === "live" && (
+                      <div className="flex items-center gap-1 text-[10px] font-bold text-amber-500 animate-pulse mt-1">
+                        <Activity className="w-3 h-3 text-amber-400" />
+                        <span>Live: {match.actual_home_score} - {match.actual_away_score}</span>
+                      </div>
+                    )}
+                    {match.status === "scheduled" && (
+                      <div className="flex items-center gap-1 text-[9px] text-slate-400 mt-1 font-semibold">
+                        <Unlock className="w-3 h-3 text-emerald-500/60" />
+                        <span>Open for predictions</span>
+                      </div>
+                    )}
+                  </td>
+
+                  {/* Predictions cells per user */}
+                  {sortedUsers.map(user => {
+                    const savedPred = user.betting_scores.find(p => p.match_id === match.id);
+                    const localEdit = unsavedChanges[user.id]?.[match.id];
+                    
+                    const homeVal = localEdit !== undefined ? localEdit.home : (savedPred ? savedPred.predicted_home_score : 0);
+                    const awayVal = localEdit !== undefined ? localEdit.away : (savedPred ? savedPred.predicted_away_score : 0);
+                    
+                    const isCellEdited = localEdit !== undefined && (savedPred 
+                      ? (savedPred.predicted_home_score !== localEdit.home || savedPred.predicted_away_score !== localEdit.away)
+                      : (localEdit.home !== 0 || localEdit.away !== 0)
+                    );
+
+                    // If match is locked, render static color-coded badge based on points earned
+                    if (isLocked) {
+                      const points = savedPred ? savedPred.points_earned : null;
+                      let cellStyle = "text-slate-400 bg-slate-50/50";
+                      let badge = null;
+
+                      if (points !== null && points > 0) {
+                        if (points === pointStructure.exact_match_points) {
+                          cellStyle = "bg-emerald-50 text-emerald-700 font-extrabold border border-emerald-200/60 shadow-sm";
+                          badge = <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border border-white" title="Exact Hit"></span>;
+                        } else {
+                          cellStyle = "bg-emerald-50/40 text-slate-700 font-bold border border-emerald-100/40";
+                          badge = <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400/60 rounded-full border border-white" title="Correct Outcome"></span>;
+                        }
+                      } else if (points === 0) {
+                        cellStyle = "bg-red-50/10 text-slate-400 border border-slate-100";
+                      }
+
+                      return (
+                        <td key={user.id} className="p-3 text-center border-r border-slate-200/35 align-middle">
+                          <div className="flex justify-center">
+                            <div className={`relative px-3 py-1 rounded-xl text-xs font-mono font-bold tracking-wider inline-block text-center min-w-[50px] ${cellStyle}`}>
+                              {homeVal} - {awayVal}
+                              {badge}
+                            </div>
+                          </div>
+                        </td>
+                      );
+                    }
+
+                    // Otherwise, render editable text inputs
+                    return (
+                      <td key={user.id} className={`p-2 text-center border-r border-slate-200/35 align-middle transition-colors ${
+                        isCellEdited ? 'bg-amber-500/5' : ''
+                      }`}>
+                        <div className="flex items-center justify-center gap-1">
+                          <input
+                            type="text"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            value={homeVal}
+                            onChange={(e) => {
+                              const val = e.target.value === "" ? 0 : parseInt(e.target.value);
+                              if (!isNaN(val)) onPredChange(user.id, match.id, "home", val);
+                            }}
+                            className={`w-7 h-7 text-center font-bold font-mono text-xs bg-slate-50 border rounded-lg focus:outline-none focus:border-emerald-500 transition-all ${
+                              isCellEdited 
+                                ? 'border-amber-400 text-amber-600 bg-amber-50/40 shadow-inner' 
+                                : 'border-slate-200 text-slate-800 hover:border-slate-300'
+                            }`}
+                          />
+                          <span className="text-slate-400 font-mono">-</span>
+                          <input
+                            type="text"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            value={awayVal}
+                            onChange={(e) => {
+                              const val = e.target.value === "" ? 0 : parseInt(e.target.value);
+                              if (!isNaN(val)) onPredChange(user.id, match.id, "away", val);
+                            }}
+                            className={`w-7 h-7 text-center font-bold font-mono text-xs bg-slate-50 border rounded-lg focus:outline-none focus:border-emerald-500 transition-all ${
+                              isCellEdited 
+                                ? 'border-amber-400 text-amber-600 bg-amber-50/40 shadow-inner' 
+                                : 'border-slate-200 text-slate-800 hover:border-slate-300'
+                            }`}
+                          />
+                        </div>
+                      </td>
+                    );
+                  })}
+
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Floating Save Actions Banner */}
+      {hasChanges && (
+        <div className="bg-slate-950/95 border border-emerald-500/25 p-4 rounded-2xl flex flex-col sm:flex-row gap-4 items-center justify-between shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-300 relative overflow-hidden">
           <div className="absolute inset-0 bg-emerald-500/5 pointer-events-none"></div>
 
-          <div>
-            <span className="block text-xs font-bold text-emerald-400">Unsaved Predictions</span>
-            <span className="text-[11px] text-slate-400">Save edits for {activeUser?.name} before switching</span>
+          <div className="text-center sm:text-left z-10">
+            <span className="block text-xs font-bold text-emerald-400">Unsaved predictions cache</span>
+            <span className="text-[11px] text-slate-400">
+              Unsaved edits detected for: <span className="font-bold text-slate-200">{modifiedNames}</span>
+            </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 z-10 w-full sm:w-auto justify-center sm:justify-end">
+            <button
+              onClick={onClearLocalChanges}
+              className="text-xs text-slate-400 hover:text-slate-100 font-bold px-3 py-2 rounded-xl transition-colors hover:bg-slate-900 cursor-pointer"
+            >
+              Reset Edits
+            </button>
+            
             {saveSuccess && (
-              <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+              <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1 animate-in zoom-in-95">
                 <Check className="w-4 h-4" /> Saved!
               </span>
             )}
+            
             <button
               onClick={onSavePredictions}
               disabled={isSaving}
@@ -378,53 +336,10 @@ export default function PredictionWorkspace({
                 </>
               ) : (
                 <>
-                  <Save className="w-3.5 h-3.5" /> Save Changes
+                  <Save className="w-3.5 h-3.5" /> Save Predictions
                 </>
               )}
             </button>
-          </div>
-        </div>
-      )}
-      {/* Delete User Modal Confirmation Dialogue */}
-      {userToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="glass-panel w-full max-w-md rounded-2xl overflow-hidden shadow-2xl border border-red-500/20 p-6 flex flex-col gap-6 animate-in zoom-in-95 duration-200">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-red-500/10 rounded-xl text-red-500 shrink-0">
-                <Trash2 className="w-6 h-6" />
-              </div>
-              <div className="space-y-1.5 flex-1">
-                <h3 className="font-bold text-base text-slate-100">¿Eliminar participante?</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  ¿Estás seguro de que deseas eliminar a <span className="font-bold text-red-400">{userToDelete.name}</span> de la quiniela? Esta acción borrará permanentemente todas sus predicciones y no se puede deshacer.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-3 justify-end border-t border-slate-800/40 pt-4">
-              <button
-                type="button"
-                onClick={() => setUserToDelete(null)}
-                disabled={isDeleting}
-                className="bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors cursor-pointer"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                onClick={handleConfirmDelete}
-                disabled={isDeleting}
-                className="bg-red-500 hover:bg-red-650 disabled:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
-              >
-                {isDeleting ? (
-                  <>
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Eliminando...
-                  </>
-                ) : (
-                  "Confirmar"
-                )}
-              </button>
-            </div>
           </div>
         </div>
       )}

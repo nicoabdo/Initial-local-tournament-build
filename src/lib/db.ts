@@ -258,6 +258,37 @@ export function savePredictions(userId: string, predictions: { match_id: string;
   return db;
 }
 
+export function saveAllPredictions(allPredictions: Record<string, { match_id: string; home: number; away: number }[]>): Database {
+  const db = getDatabase();
+  Object.keys(allPredictions).forEach(userId => {
+    const user = db.users.find(u => u.id === userId);
+    if (!user) return;
+
+    const predictions = allPredictions[userId];
+    predictions.forEach(pred => {
+      const match = db.matches.find(m => m.id === pred.match_id);
+      if (match && match.status === 'scheduled') {
+        const existingPredIndex = user.betting_scores.findIndex(p => p.match_id === pred.match_id);
+        const predictionObj: Prediction = {
+          match_id: pred.match_id,
+          predicted_home_score: pred.home,
+          predicted_away_score: pred.away,
+          points_earned: null
+        };
+
+        if (existingPredIndex >= 0) {
+          user.betting_scores[existingPredIndex] = predictionObj;
+        } else {
+          user.betting_scores.push(predictionObj);
+        }
+      }
+    });
+  });
+
+  saveDatabase(db);
+  return db;
+}
+
 export function updateMatchScore(matchId: string, home: number | null, away: number | null, status: 'scheduled' | 'live' | 'finished'): Database {
   const db = getDatabase();
   const match = db.matches.find(m => m.id === matchId);
