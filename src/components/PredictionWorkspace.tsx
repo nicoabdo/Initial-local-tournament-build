@@ -37,6 +37,7 @@ export default function PredictionWorkspace({
   const [stageFilter, setStageFilter] = useState<"all" | "group" | "knockout">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [overrideUnlock, setOverrideUnlock] = useState(false);
+  const [focusedUserId, setFocusedUserId] = useState<string>("all");
 
   // Sort users by points descending (leaderboard order) for standard presentation
   const sortedUsers = [...users].sort((a, b) => b.total_points - a.total_points);
@@ -97,26 +98,43 @@ export default function PredictionWorkspace({
       </div>
 
       {/* Search and Filter Toolbar */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-100">
-        {/* Stage Filter Tab Buttons */}
-        <div className="flex bg-slate-200/60 p-1 rounded-xl border border-slate-300/30 w-full sm:w-auto">
-          {(["all", "group", "knockout"] as const).map(tab => (
-            <button
-              key={tab}
-              onClick={() => setStageFilter(tab)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                stageFilter === tab 
-                  ? "bg-white text-emerald-600 shadow-sm"
-                  : "text-slate-550 hover:text-slate-850"
-              }`}
+      <div className="flex flex-col lg:flex-row gap-4 items-center justify-between bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-100">
+        {/* Left side: Stage Filter Tab Buttons & Participant Selector */}
+        <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto items-center">
+          {/* Stage Filter Tab Buttons */}
+          <div className="flex bg-slate-200/60 p-1 rounded-xl border border-slate-300/30 w-full sm:w-auto justify-between sm:justify-start">
+            {(["all", "group", "knockout"] as const).map(tab => (
+              <button
+                key={tab}
+                onClick={() => setStageFilter(tab)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  stageFilter === tab 
+                    ? "bg-white text-emerald-600 shadow-sm"
+                    : "text-slate-555 hover:text-slate-850"
+                }`}
+              >
+                {tab === "all" ? "All Matches" : tab === "group" ? "Groups" : "Knockouts"}
+              </button>
+            ))}
+          </div>
+
+          {/* Participant Filter Dropdown */}
+          <div className="relative w-full sm:w-48">
+            <select
+              value={focusedUserId}
+              onChange={(e) => setFocusedUserId(e.target.value)}
+              className="w-full bg-white border border-slate-205 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-emerald-500/80 shadow-sm font-semibold cursor-pointer"
             >
-              {tab === "all" ? "All Matches" : tab === "group" ? "Group Stage" : "Knockouts"}
-            </button>
-          ))}
+              <option value="all">👥 Show All Participants</option>
+              {sortedUsers.map(u => (
+                <option key={u.id} value={u.id}>👤 Focus: {u.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Right side: Lock Toggle & Search */}
-        <div className="flex flex-col sm:flex-row gap-3 items-center w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 items-center w-full lg:w-auto">
           {/* Lock / Unlock Toggle Button */}
           <button
             type="button"
@@ -124,7 +142,7 @@ export default function PredictionWorkspace({
             className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer w-full sm:w-auto justify-center ${
               overrideUnlock 
                 ? "bg-red-50 text-red-600 border-red-200 hover:bg-red-100/60 shadow-sm" 
-                : "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-250/60"
+                : "bg-slate-100 text-slate-100 border-slate-200 hover:bg-slate-250/60"
             }`}
           >
             {overrideUnlock ? (
@@ -141,11 +159,11 @@ export default function PredictionWorkspace({
           </button>
 
           {/* Search Input */}
-          <div className="relative w-full sm:w-56">
+          <div className="relative w-full sm:w-48">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Search teams or groups..."
+              placeholder="Search teams..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-100 focus:outline-none focus:border-emerald-500/80 shadow-inner"
@@ -172,21 +190,23 @@ export default function PredictionWorkspace({
           <thead className="sticky top-0 bg-slate-50 border-b border-slate-200/80 z-20 shadow-sm">
             <tr>
               {/* Sticky first column header */}
-              <th className="sticky left-0 bg-slate-50 z-30 p-3 font-bold text-slate-600 min-w-[200px] border-r border-slate-200/60 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
+              <th className="sticky left-0 bg-slate-50 z-30 p-3 font-bold text-slate-600 min-w-[125px] sm:min-w-[200px] border-r border-slate-200/60 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
                 Match Details
               </th>
               
               {/* User columns */}
-              {sortedUsers.map(user => (
-                <th key={user.id} className="p-3 text-center min-w-[105px] border-r border-slate-200/30">
-                  <div className="font-extrabold text-slate-850 truncate max-w-[95px]" title={user.name}>
-                    {user.name}
-                  </div>
-                  <div className="text-[10px] text-emerald-650 font-bold mt-0.5">
-                    {user.total_points} pts
-                  </div>
-                </th>
-              ))}
+              {sortedUsers
+                .filter(u => focusedUserId === "all" || u.id === focusedUserId)
+                .map(user => (
+                  <th key={user.id} className="p-3 text-center min-w-[105px] border-r border-slate-200/30">
+                    <div className="font-extrabold text-slate-850 truncate max-w-[95px]" title={user.name}>
+                      {user.name}
+                    </div>
+                    <div className="text-[10px] text-emerald-650 font-bold mt-0.5">
+                      {user.total_points} pts
+                    </div>
+                  </th>
+                ))}
             </tr>
           </thead>
 
@@ -199,9 +219,9 @@ export default function PredictionWorkspace({
                 <tr key={match.id} className="hover:bg-slate-50/50 transition-colors group">
                   
                   {/* Sticky First Column: Match Details */}
-                  <td className="sticky left-0 bg-white z-10 p-3 border-r border-slate-200/60 min-w-[200px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] group-hover:bg-slate-50">
-                    <div className="flex items-center justify-between text-[9px] text-slate-500 mb-1">
-                      <span className="font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold">
+                  <td className="sticky left-0 bg-white z-10 p-3 border-r border-slate-200/60 min-w-[125px] sm:min-w-[200px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] group-hover:bg-slate-50">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[9px] text-slate-500 mb-1 gap-1">
+                      <span className="font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold self-start sm:self-auto">
                         {match.group_stage}
                       </span>
                       <span>
@@ -209,8 +229,10 @@ export default function PredictionWorkspace({
                       </span>
                     </div>
                     
-                    <div className="font-bold text-slate-100 flex items-center justify-between gap-1">
-                      <span className="truncate">{match.team_home} vs {match.team_away}</span>
+                    <div className="font-bold text-slate-100 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-0.5 sm:gap-1 text-xs">
+                      <span className="truncate max-w-[110px] sm:max-w-none">{match.team_home}</span>
+                      <span className="text-[9px] text-slate-400 font-normal sm:mx-1 self-start sm:self-auto">vs</span>
+                      <span className="truncate max-w-[110px] sm:max-w-none">{match.team_away}</span>
                     </div>
 
                     {/* Official / Live Match Scores */}
@@ -229,13 +251,15 @@ export default function PredictionWorkspace({
                     {match.status === "scheduled" && (
                       <div className="flex items-center gap-1 text-[9px] text-slate-400 mt-1 font-semibold">
                         <Unlock className="w-3 h-3 text-emerald-500/60" />
-                        <span>Open for predictions</span>
+                        <span>Open</span>
                       </div>
                     )}
                   </td>
 
                   {/* Predictions cells per user */}
-                  {sortedUsers.map(user => {
+                  {sortedUsers
+                    .filter(u => focusedUserId === "all" || u.id === focusedUserId)
+                    .map(user => {
                     const savedPred = user.betting_scores.find(p => p.match_id === match.id);
                     const localEdit = unsavedChanges[user.id]?.[match.id];
                     
