@@ -34,7 +34,6 @@ export default function PredictionWorkspace({
   isSaving,
   saveSuccess
 }: PredictionWorkspaceProps) {
-  const [stageFilter, setStageFilter] = useState<"all" | "group" | "knockout">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [overrideUnlock, setOverrideUnlock] = useState(false);
   const [focusedUserId, setFocusedUserId] = useState<string>("all");
@@ -42,14 +41,9 @@ export default function PredictionWorkspace({
   // Sort users by points descending (leaderboard order) for standard presentation
   const sortedUsers = [...users].sort((a, b) => b.total_points - a.total_points);
 
-  // Filter matches based on stage selection and search text
+  // Filter matches based on search text
   const filteredMatches = matches.filter(match => {
-    // 1. Stage filter
-    const isKnockout = ["Round of 16", "Quarter-finals", "Semi-finals", "Final"].includes(match.group_stage);
-    if (stageFilter === "group" && isKnockout) return false;
-    if (stageFilter === "knockout" && !isKnockout) return false;
-
-    // 2. Search query (teams or group name)
+    // Search query (teams or group name)
     if (searchQuery.trim() !== "") {
       const query = searchQuery.toLowerCase();
       const matchHome = match.team_home.toLowerCase();
@@ -99,25 +93,8 @@ export default function PredictionWorkspace({
 
       {/* Search and Filter Toolbar */}
       <div className="flex flex-col lg:flex-row gap-4 items-center justify-between bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-100">
-        {/* Left side: Stage Filter Tab Buttons & Participant Selector */}
+        {/* Left side: Participant Selector */}
         <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto items-center">
-          {/* Stage Filter Tab Buttons */}
-          <div className="flex bg-slate-200/60 p-1 rounded-xl border border-slate-300/30 w-full sm:w-auto justify-between sm:justify-start">
-            {(["all", "group", "knockout"] as const).map(tab => (
-              <button
-                key={tab}
-                onClick={() => setStageFilter(tab)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  stageFilter === tab 
-                    ? "bg-white text-emerald-600 shadow-sm"
-                    : "text-slate-555 hover:text-slate-850"
-                }`}
-              >
-                {tab === "all" ? "All Matches" : tab === "group" ? "Groups" : "Knockouts"}
-              </button>
-            ))}
-          </div>
-
           {/* Participant Filter Dropdown */}
           <div className="relative w-full sm:w-48">
             <select
