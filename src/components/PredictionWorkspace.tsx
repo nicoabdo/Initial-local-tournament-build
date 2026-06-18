@@ -142,7 +142,7 @@ export default function PredictionWorkspace({
             className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer w-full sm:w-auto justify-center ${
               overrideUnlock 
                 ? "bg-red-50 text-red-600 border-red-200 hover:bg-red-100/60 shadow-sm" 
-                : "bg-slate-100 text-slate-100 border-slate-200 hover:bg-slate-250/60"
+                : "bg-slate-100 text-slate-800 border-slate-200 hover:bg-slate-250/60"
             }`}
           >
             {overrideUnlock ? (
@@ -219,9 +219,9 @@ export default function PredictionWorkspace({
                 <tr key={match.id} className="hover:bg-slate-50/50 transition-colors group">
                   
                   {/* Sticky First Column: Match Details */}
-                  <td className="sticky left-0 bg-white z-10 p-3 border-r border-slate-200/60 min-w-[125px] sm:min-w-[200px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] group-hover:bg-slate-50">
+                  <td className="sticky left-0 bg-slate-50 z-10 p-3 border-r border-slate-200/60 min-w-[125px] sm:min-w-[200px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] group-hover:bg-slate-200">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[9px] text-slate-500 mb-1 gap-1">
-                      <span className="font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold self-start sm:self-auto">
+                      <span className="font-mono bg-slate-800 text-slate-100 px-1.5 py-0.5 rounded font-bold self-start sm:self-auto">
                         {match.group_stage}
                       </span>
                       <span>
@@ -229,7 +229,7 @@ export default function PredictionWorkspace({
                       </span>
                     </div>
                     
-                    <div className="font-bold text-slate-100 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-0.5 sm:gap-1 text-xs">
+                    <div className="font-bold text-white flex flex-col sm:flex-row sm:items-start sm:justify-between gap-0.5 sm:gap-1 text-xs">
                       <span className="truncate max-w-[110px] sm:max-w-none">{match.team_home}</span>
                       <span className="text-[9px] text-slate-400 font-normal sm:mx-1 self-start sm:self-auto">vs</span>
                       <span className="truncate max-w-[110px] sm:max-w-none">{match.team_away}</span>
@@ -319,7 +319,7 @@ export default function PredictionWorkspace({
                             className={`w-7 h-7 text-center font-bold font-mono text-xs bg-slate-50 border rounded-lg focus:outline-none focus:border-emerald-500 transition-all ${
                               isCellEdited 
                                 ? 'border-amber-400 text-amber-600 bg-amber-50/40 shadow-inner' 
-                                : 'border-slate-200 text-slate-100 hover:border-slate-300'
+                                : 'border-slate-200 text-white hover:border-slate-300'
                             }`}
                           />
                           <span className="text-slate-400 font-mono">-</span>
@@ -335,7 +335,7 @@ export default function PredictionWorkspace({
                             className={`w-7 h-7 text-center font-bold font-mono text-xs bg-slate-50 border rounded-lg focus:outline-none focus:border-emerald-500 transition-all ${
                               isCellEdited 
                                 ? 'border-amber-400 text-amber-600 bg-amber-50/40 shadow-inner' 
-                                : 'border-slate-200 text-slate-100 hover:border-slate-300'
+                                : 'border-slate-200 text-white hover:border-slate-300'
                             }`}
                           />
                         </div>
