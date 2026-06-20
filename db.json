@@ -323,9 +323,9 @@
       "team_away": "Paraguay",
       "group_stage": "Group D",
       "match_date": "2026-06-19T00:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
-      "status": "scheduled"
+      "actual_home_score": 0,
+      "actual_away_score": 1,
+      "status": "finished"
     },
     {
       "id": "m33",
@@ -732,7 +732,7 @@
     {
       "id": "abuelo",
       "name": "ABUELO",
-      "total_points": 20,
+      "total_points": 21,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -924,7 +924,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m33",
@@ -1363,7 +1363,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -1802,7 +1802,7 @@
           "match_id": "m32",
           "predicted_home_score": 2,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -2241,7 +2241,7 @@
           "match_id": "m32",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -2680,7 +2680,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -3119,7 +3119,7 @@
           "match_id": "m32",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -3558,7 +3558,7 @@
           "match_id": "m32",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -3997,7 +3997,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -4436,7 +4436,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -4875,7 +4875,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -5314,7 +5314,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -5753,7 +5753,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -6192,7 +6192,7 @@
           "match_id": "m32",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -6631,7 +6631,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
@@ -6878,7 +6878,7 @@
     {
       "id": "sarich",
       "name": "SARICH",
-      "total_points": 17,
+      "total_points": 18,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -7070,7 +7070,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m33",
@@ -7317,7 +7317,7 @@
     {
       "id": "pao",
       "name": "PAO",
-      "total_points": 19,
+      "total_points": 20,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -7509,7 +7509,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m33",
@@ -7948,7 +7948,7 @@
           "match_id": "m32",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m33",
