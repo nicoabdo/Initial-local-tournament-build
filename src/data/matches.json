@@ -790,5 +790,16 @@
     "actual_away_score": null,
     "status": "scheduled",
     "phase": "fase de grupos"
+  },
+  {
+    "id": "m73",
+    "team_home": "Sudáfrica",
+    "team_away": "Canadá",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-28T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
   }
 ]
