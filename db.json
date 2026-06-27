@@ -633,9 +633,9 @@
       "team_away": "Arabia Saudí",
       "group_stage": "Group H",
       "match_date": "2026-06-27T21:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
-      "status": "scheduled"
+      "actual_home_score": 0,
+      "actual_away_score": 0,
+      "status": "finished"
     },
     {
       "id": "m64",
@@ -643,9 +643,9 @@
       "team_away": "España",
       "group_stage": "Group H",
       "match_date": "2026-06-27T18:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
-      "status": "scheduled"
+      "actual_home_score": 0,
+      "actual_away_score": 1,
+      "status": "finished"
     },
     {
       "id": "m65",
@@ -653,9 +653,9 @@
       "team_away": "República Islámica de Irán",
       "group_stage": "Group G",
       "match_date": "2026-06-27T21:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
-      "status": "scheduled"
+      "actual_home_score": 1,
+      "actual_away_score": 1,
+      "status": "finished"
     },
     {
       "id": "m66",
@@ -663,9 +663,9 @@
       "team_away": "Bélgica",
       "group_stage": "Group G",
       "match_date": "2026-06-27T18:00:00Z",
-      "actual_home_score": null,
-      "actual_away_score": null,
-      "status": "scheduled"
+      "actual_home_score": 1,
+      "actual_away_score": 5,
+      "status": "finished"
     },
     {
       "id": "m67",
@@ -732,7 +732,7 @@
     {
       "id": "abuelo",
       "name": "ABUELO",
-      "total_points": 34,
+      "total_points": 38,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -1078,92 +1078,92 @@
         },
         {
           "match_id": "m58",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
           "points_earned": 0
         },
         {
           "match_id": "m59",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 1
+          "predicted_home_score": 3,
+          "predicted_away_score": 1,
+          "points_earned": 0
         },
         {
           "match_id": "m60",
           "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 0
+          "predicted_away_score": 3,
+          "points_earned": 1
         },
         {
           "match_id": "m61",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 0
+          "predicted_home_score": 1,
+          "predicted_away_score": 3,
+          "points_earned": 1
         },
         {
           "match_id": "m62",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 0
+          "predicted_home_score": 3,
+          "predicted_away_score": 2,
+          "points_earned": 1
         },
         {
           "match_id": "m63",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": null
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
+          "points_earned": 0
         },
         {
           "match_id": "m64",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": null
+          "predicted_home_score": 2,
+          "predicted_away_score": 3,
+          "points_earned": 1
         },
         {
           "match_id": "m65",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": null
+          "predicted_home_score": 1,
+          "predicted_away_score": 2,
+          "points_earned": 0
         },
         {
           "match_id": "m66",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": null
+          "predicted_home_score": 1,
+          "predicted_away_score": 3,
+          "points_earned": 1
         },
         {
           "match_id": "m67",
           "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_away_score": 4,
           "points_earned": null
         },
         {
           "match_id": "m68",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m69",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 1,
+          "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m70",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m71",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m72",
           "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_away_score": 4,
           "points_earned": null
         }
       ]
@@ -1171,7 +1171,7 @@
     {
       "id": "ely",
       "name": "ELY",
-      "total_points": 41,
+      "total_points": 43,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -1549,25 +1549,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -1610,7 +1610,7 @@
     {
       "id": "car_alva",
       "name": "CAR/ALVA",
-      "total_points": 33,
+      "total_points": 35,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -1988,25 +1988,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -2049,7 +2049,7 @@
     {
       "id": "andres",
       "name": "ANDRES",
-      "total_points": 43,
+      "total_points": 45,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -2427,25 +2427,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -2488,7 +2488,7 @@
     {
       "id": "mati",
       "name": "MATI",
-      "total_points": 43,
+      "total_points": 46,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -2866,25 +2866,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 2
         },
         {
           "match_id": "m66",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m67",
@@ -2927,7 +2927,7 @@
     {
       "id": "gonzi",
       "name": "GONZI",
-      "total_points": 39,
+      "total_points": 43,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -3305,25 +3305,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 2
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -3366,7 +3366,7 @@
     {
       "id": "keko",
       "name": "KEKO",
-      "total_points": 43,
+      "total_points": 44,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -3744,25 +3744,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 2,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -3805,7 +3805,7 @@
     {
       "id": "nena",
       "name": "NENA",
-      "total_points": 43,
+      "total_points": 45,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -4183,25 +4183,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -4244,7 +4244,7 @@
     {
       "id": "mari",
       "name": "MARI",
-      "total_points": 43,
+      "total_points": 45,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -4622,25 +4622,25 @@
           "match_id": "m63",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -4683,7 +4683,7 @@
     {
       "id": "nico",
       "name": "NICO",
-      "total_points": 47,
+      "total_points": 52,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -5061,25 +5061,25 @@
           "match_id": "m63",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 2
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -5122,7 +5122,7 @@
     {
       "id": "ale",
       "name": "ALE",
-      "total_points": 50,
+      "total_points": 52,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -5500,25 +5500,25 @@
           "match_id": "m63",
           "predicted_home_score": 1,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -5561,7 +5561,7 @@
     {
       "id": "kyke",
       "name": "KYKE",
-      "total_points": 48,
+      "total_points": 51,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -5939,25 +5939,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -6000,7 +6000,7 @@
     {
       "id": "leo",
       "name": "LEO",
-      "total_points": 41,
+      "total_points": 43,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -6378,25 +6378,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -6439,7 +6439,7 @@
     {
       "id": "mate",
       "name": "MATE",
-      "total_points": 36,
+      "total_points": 39,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -6817,60 +6817,60 @@
           "match_id": "m63",
           "predicted_home_score": 0,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 2
         },
         {
           "match_id": "m64",
           "predicted_home_score": 0,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m65",
           "predicted_home_score": 0,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m67",
           "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m68",
-          "predicted_home_score": 0,
+          "predicted_home_score": 1,
           "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m69",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 2,
+          "predicted_away_score": 2,
           "points_earned": null
         },
         {
           "match_id": "m70",
-          "predicted_home_score": 0,
+          "predicted_home_score": 1,
           "predicted_away_score": 0,
           "points_earned": null
         },
         {
           "match_id": "m71",
           "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m72",
           "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_away_score": 1,
           "points_earned": null
         }
       ]
@@ -6878,7 +6878,7 @@
     {
       "id": "sarich",
       "name": "SARICH",
-      "total_points": 44,
+      "total_points": 47,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -7256,25 +7256,25 @@
           "match_id": "m63",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 0,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -7317,7 +7317,7 @@
     {
       "id": "pao",
       "name": "PAO",
-      "total_points": 38,
+      "total_points": 40,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -7695,25 +7695,25 @@
           "match_id": "m63",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m64",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 0,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",
@@ -7756,7 +7756,7 @@
     {
       "id": "sebas",
       "name": "SEBAS",
-      "total_points": 43,
+      "total_points": 46,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -8134,25 +8134,25 @@
           "match_id": "m63",
           "predicted_home_score": 1,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m64",
           "predicted_home_score": 2,
           "predicted_away_score": 3,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m65",
           "predicted_home_score": 2,
           "predicted_away_score": 1,
-          "points_earned": null
+          "points_earned": 0
         },
         {
           "match_id": "m66",
           "predicted_home_score": 1,
           "predicted_away_score": 2,
-          "points_earned": null
+          "points_earned": 1
         },
         {
           "match_id": "m67",

@@ -28,8 +28,8 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
     initialDb.users.length > 0 ? initialDb.users[0].id : ""
   );
 
-  // Layout Tab: 'workspace' (User Prediction Workspace) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
-  const [activeTab, setActiveTab] = useState<"workspace" | "admin" | "standings" | "statistics">("workspace");
+  // Layout Tab: 'workspace' (User Prediction Workspace) | '16avos' (16 Avos Phase) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
+  const [activeTab, setActiveTab] = useState<"workspace" | "16avos" | "admin" | "standings" | "statistics">("workspace");
 
   // Centralized cache of unsaved predictions: Record<userId, Record<matchId, {home, away}>>
   const [unsavedChanges, setUnsavedChanges] = useState<Record<string, Record<string, { home: number; away: number }>>>({});
@@ -249,10 +249,10 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
 
         {/* Module Switching Navigation Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex bg-slate-950/50 p-1.5 rounded-2xl border border-slate-900/80 max-w-xl w-full sm:w-auto">
+          <div className="flex bg-slate-950/50 p-1.5 rounded-2xl border border-slate-900/80 max-w-2xl w-full sm:w-auto overflow-x-auto">
             <button
               onClick={() => setActiveTab("workspace")}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
                 activeTab === "workspace"
                   ? "bg-emerald-500 text-slate-50 shadow-lg shadow-emerald-500/10"
                   : "text-slate-400 hover:text-slate-200"
@@ -262,8 +262,19 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
               Workspace
             </button>
             <button
+              onClick={() => setActiveTab("16avos")}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
+                activeTab === "16avos"
+                  ? "bg-teal-500 text-slate-50 shadow-lg shadow-teal-500/10"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <Compass className="w-4 h-4" />
+              16 avos
+            </button>
+            <button
               onClick={() => setActiveTab("admin")}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
                 activeTab === "admin"
                   ? "bg-amber-500 text-slate-50 shadow-lg shadow-amber-500/10"
                   : "text-slate-400 hover:text-slate-200"
@@ -314,7 +325,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
             {activeTab === "workspace" && (
               <PredictionWorkspace
                 users={db.users}
-                matches={db.matches}
+                matches={db.matches.filter(m => m.group_stage.toLowerCase().startsWith("group"))}
                 pointStructure={db.settings.pointStructure}
                 unsavedChanges={unsavedChanges}
                 onPredChange={handlePredChange}
@@ -322,6 +333,23 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
                 onClearLocalChanges={() => setUnsavedChanges({})}
                 isSaving={isSaving}
                 saveSuccess={saveSuccess}
+                title="Group Stage Predictions Grid"
+                subTitle="View & edit all participant predictions for the Group Stage"
+              />
+            )}
+            {activeTab === "16avos" && (
+              <PredictionWorkspace
+                users={db.users}
+                matches={db.matches.filter(m => m.group_stage.toLowerCase().includes("16"))}
+                pointStructure={db.settings.pointStructure}
+                unsavedChanges={unsavedChanges}
+                onPredChange={handlePredChange}
+                onSavePredictions={handleSavePredictions}
+                onClearLocalChanges={() => setUnsavedChanges({})}
+                isSaving={isSaving}
+                saveSuccess={saveSuccess}
+                title="16 Avos Predictions Grid"
+                subTitle="View & edit all participant predictions for the 16 Avos phase"
               />
             )}
             {activeTab === "admin" && (

@@ -21,6 +21,8 @@ interface PredictionWorkspaceProps {
   onClearLocalChanges: () => void;
   isSaving: boolean;
   saveSuccess: boolean;
+  title?: string;
+  subTitle?: string;
 }
 
 export default function PredictionWorkspace({
@@ -32,7 +34,9 @@ export default function PredictionWorkspace({
   onSavePredictions,
   onClearLocalChanges,
   isSaving,
-  saveSuccess
+  saveSuccess,
+  title = "Predictions Grid",
+  subTitle = "View & edit all participant predictions in real-time"
 }: PredictionWorkspaceProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [overrideUnlock, setOverrideUnlock] = useState(false);
@@ -84,9 +88,9 @@ export default function PredictionWorkspace({
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/25">
         <div>
-          <h2 className="text-xl font-bold text-slate-100 tracking-wide">Predictions Grid</h2>
+          <h2 className="text-xl font-bold text-slate-100 tracking-wide">{title}</h2>
           <p className="text-xs text-slate-505 font-semibold uppercase tracking-wider text-emerald-600">
-            View & edit all participant predictions in real-time
+            {subTitle}
           </p>
         </div>
       </div>
