@@ -105,7 +105,8 @@ const INITIAL_MATCHES: Match[] = userMatchesInput.map(m => {
     match_date: `${m.date}T${m.time}:00Z`,
     actual_home_score,
     actual_away_score,
-    status
+    status,
+    phase: "groups"
   };
 });
 

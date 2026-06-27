@@ -7,7 +7,8 @@
     "match_date": "2026-06-11T15:00:00Z",
     "actual_home_score": 2,
     "actual_away_score": 0,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m2",
@@ -17,7 +18,8 @@
     "match_date": "2026-06-11T22:00:00Z",
     "actual_home_score": 2,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m3",
@@ -27,7 +29,8 @@
     "match_date": "2026-06-12T15:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m4",
@@ -37,7 +40,8 @@
     "match_date": "2026-06-12T21:00:00Z",
     "actual_home_score": 4,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m5",
@@ -47,7 +51,8 @@
     "match_date": "2026-06-13T15:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m6",
@@ -57,7 +62,8 @@
     "match_date": "2026-06-13T18:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m7",
@@ -67,7 +73,8 @@
     "match_date": "2026-06-13T21:00:00Z",
     "actual_home_score": 0,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m8",
@@ -77,7 +84,8 @@
     "match_date": "2026-06-13T00:00:00Z",
     "actual_home_score": 2,
     "actual_away_score": 0,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m9",
@@ -87,7 +95,8 @@
     "match_date": "2026-06-14T13:00:00Z",
     "actual_home_score": 7,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m10",
@@ -97,7 +106,8 @@
     "match_date": "2026-06-14T16:00:00Z",
     "actual_home_score": 2,
     "actual_away_score": 2,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m11",
@@ -107,7 +117,8 @@
     "match_date": "2026-06-14T19:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 0,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m12",
@@ -117,7 +128,8 @@
     "match_date": "2026-06-14T22:00:00Z",
     "actual_home_score": 5,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m13",
@@ -127,7 +139,8 @@
     "match_date": "2026-06-15T12:00:00Z",
     "actual_home_score": 0,
     "actual_away_score": 0,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m14",
@@ -137,7 +150,8 @@
     "match_date": "2026-06-15T15:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m15",
@@ -147,7 +161,8 @@
     "match_date": "2026-06-15T18:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m16",
@@ -157,7 +172,8 @@
     "match_date": "2026-06-15T21:00:00Z",
     "actual_home_score": 2,
     "actual_away_score": 2,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m17",
@@ -167,7 +183,8 @@
     "match_date": "2026-06-16T15:00:00Z",
     "actual_home_score": 3,
     "actual_away_score": 1,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m18",
@@ -177,7 +194,8 @@
     "match_date": "2026-06-16T18:00:00Z",
     "actual_home_score": 1,
     "actual_away_score": 4,
-    "status": "finished"
+    "status": "finished",
+    "phase": "groups"
   },
   {
     "id": "m19",
@@ -187,7 +205,8 @@
     "match_date": "2026-06-16T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m20",
@@ -197,7 +216,8 @@
     "match_date": "2026-06-16T00:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m21",
@@ -207,7 +227,8 @@
     "match_date": "2026-06-17T13:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m22",
@@ -217,7 +238,8 @@
     "match_date": "2026-06-17T16:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m23",
@@ -227,7 +249,8 @@
     "match_date": "2026-06-17T19:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m24",
@@ -237,7 +260,8 @@
     "match_date": "2026-06-17T22:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m25",
@@ -247,7 +271,8 @@
     "match_date": "2026-06-18T12:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m26",
@@ -257,7 +282,8 @@
     "match_date": "2026-06-18T15:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m27",
@@ -267,7 +293,8 @@
     "match_date": "2026-06-18T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m28",
@@ -277,7 +304,8 @@
     "match_date": "2026-06-18T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m29",
@@ -287,7 +315,8 @@
     "match_date": "2026-06-19T15:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m30",
@@ -297,7 +326,8 @@
     "match_date": "2026-06-19T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m31",
@@ -307,7 +337,8 @@
     "match_date": "2026-06-19T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m32",
@@ -317,7 +348,8 @@
     "match_date": "2026-06-19T00:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m33",
@@ -327,7 +359,8 @@
     "match_date": "2026-06-20T13:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m34",
@@ -337,7 +370,8 @@
     "match_date": "2026-06-20T16:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m35",
@@ -347,7 +381,8 @@
     "match_date": "2026-06-20T22:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m36",
@@ -357,7 +392,8 @@
     "match_date": "2026-06-20T00:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m37",
@@ -367,7 +403,8 @@
     "match_date": "2026-06-21T12:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m38",
@@ -377,7 +414,8 @@
     "match_date": "2026-06-21T15:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m39",
@@ -387,7 +425,8 @@
     "match_date": "2026-06-21T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m40",
@@ -397,7 +436,8 @@
     "match_date": "2026-06-21T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m41",
@@ -407,7 +447,8 @@
     "match_date": "2026-06-22T13:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m42",
@@ -417,7 +458,8 @@
     "match_date": "2026-06-22T17:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m43",
@@ -427,7 +469,8 @@
     "match_date": "2026-06-22T20:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m44",
@@ -437,7 +480,8 @@
     "match_date": "2026-06-22T23:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m45",
@@ -447,7 +491,8 @@
     "match_date": "2026-06-23T13:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m46",
@@ -457,7 +502,8 @@
     "match_date": "2026-06-23T16:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m47",
@@ -467,7 +513,8 @@
     "match_date": "2026-06-23T19:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m48",
@@ -477,7 +524,8 @@
     "match_date": "2026-06-23T22:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m49",
@@ -487,7 +535,8 @@
     "match_date": "2026-06-24T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m50",
@@ -497,7 +546,8 @@
     "match_date": "2026-06-24T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m51",
@@ -507,7 +557,8 @@
     "match_date": "2026-06-24T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m52",
@@ -517,7 +568,8 @@
     "match_date": "2026-06-24T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m53",
@@ -527,7 +579,8 @@
     "match_date": "2026-06-25T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m54",
@@ -537,7 +590,8 @@
     "match_date": "2026-06-25T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m55",
@@ -547,7 +601,8 @@
     "match_date": "2026-06-25T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m56",
@@ -557,7 +612,8 @@
     "match_date": "2026-06-25T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m57",
@@ -567,7 +623,8 @@
     "match_date": "2026-06-26T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m58",
@@ -577,7 +634,8 @@
     "match_date": "2026-06-26T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m59",
@@ -587,7 +645,8 @@
     "match_date": "2026-06-26T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m60",
@@ -597,7 +656,8 @@
     "match_date": "2026-06-26T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m61",
@@ -607,7 +667,8 @@
     "match_date": "2026-06-28T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m62",
@@ -617,7 +678,8 @@
     "match_date": "2026-06-28T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m63",
@@ -627,7 +689,8 @@
     "match_date": "2026-06-27T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m64",
@@ -637,7 +700,8 @@
     "match_date": "2026-06-27T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m65",
@@ -647,7 +711,8 @@
     "match_date": "2026-06-27T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m66",
@@ -657,7 +722,8 @@
     "match_date": "2026-06-27T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m67",
@@ -667,7 +733,8 @@
     "match_date": "2026-06-29T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m68",
@@ -677,7 +744,8 @@
     "match_date": "2026-06-29T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m69",
@@ -687,7 +755,8 @@
     "match_date": "2026-06-29T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m70",
@@ -697,7 +766,8 @@
     "match_date": "2026-06-29T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m71",
@@ -707,7 +777,8 @@
     "match_date": "2026-06-28T21:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   },
   {
     "id": "m72",
@@ -717,6 +788,7 @@
     "match_date": "2026-06-28T18:00:00Z",
     "actual_home_score": null,
     "actual_away_score": null,
-    "status": "scheduled"
+    "status": "scheduled",
+    "phase": "groups"
   }
 ]

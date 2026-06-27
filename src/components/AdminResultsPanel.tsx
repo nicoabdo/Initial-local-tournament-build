@@ -61,13 +61,12 @@ export default function AdminResultsPanel({
     setAdminScores(initialScores);
   }, [matches]);
 
-  const [filterType, setFilterType] = useState<"group" | "16avos">("group");
+  const [filterType, setFilterType] = useState<"all" | "groups" | "16avos">("all");
 
   const filteredMatches = matches.filter(match => {
-    if (filterType === "group") {
-      return match.group_stage.toLowerCase().startsWith("group");
-    }
-    return match.group_stage.toLowerCase().includes("16");
+    if (filterType === "all") return true;
+    if (filterType === "groups") return match.phase === "groups";
+    return match.phase === "16avos";
   });
 
   const handleAdminScoreChange = (matchId: string, team: "home" | "away", val: string) => {
@@ -245,14 +244,24 @@ export default function AdminResultsPanel({
       {/* Sub-Filters Tabs */}
       <div className="flex border-b border-slate-800/40">
         <button
-          onClick={() => setFilterType("group")}
+          onClick={() => setFilterType("all")}
           className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
-            filterType === "group" 
+            filterType === "all" 
               ? "border-amber-500 text-amber-600 font-bold"
               : "border-transparent text-slate-400 hover:text-slate-200"
           }`}
         >
           All Matches
+        </button>
+        <button
+          onClick={() => setFilterType("groups")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            filterType === "groups" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          Fase de grupos
         </button>
         <button
           onClick={() => setFilterType("16avos")}

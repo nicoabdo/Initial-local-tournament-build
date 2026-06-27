@@ -22,6 +22,7 @@ export interface Match {
   actual_away_score: number | null;
   status: 'scheduled' | 'live' | 'finished';
   venue?: string;      // Stadium/venue details
+  phase?: string;      // e.g. "groups", "16avos"
 }
 
 export interface PointStructure {
