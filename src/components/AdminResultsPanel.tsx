@@ -61,14 +61,7 @@ export default function AdminResultsPanel({
     setAdminScores(initialScores);
   }, [matches]);
 
-  // Filters for matches: "all", "active" (live/finished), "scheduled"
-  const [filterType, setFilterType] = useState<"all" | "active" | "scheduled">("all");
-
-  const filteredMatches = matches.filter(match => {
-    if (filterType === "all") return true;
-    if (filterType === "active") return match.status === "live" || match.status === "finished";
-    return match.status === "scheduled";
-  });
+  const filteredMatches = matches;
 
   const handleAdminScoreChange = (matchId: string, team: "home" | "away", val: string) => {
     const current = adminScores[matchId] || { home: "", away: "", status: "scheduled" };
@@ -242,22 +235,6 @@ export default function AdminResultsPanel({
       )}
       </div>
 
-      {/* Sub-Filters Tabs */}
-      <div className="flex border-b border-slate-800/40">
-        {(["all", "active", "scheduled"] as const).map(tab => (
-          <button
-            key={tab}
-            onClick={() => setFilterType(tab)}
-            className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] ${
-              filterType === tab 
-                ? "border-amber-500 text-amber-600 font-bold"
-                : "border-transparent text-slate-400 hover:text-slate-200"
-            }`}
-          >
-            {tab === "all" ? "All Games" : tab === "active" ? "Live / Completed" : "Upcoming Scheduled"}
-          </button>
-        ))}
-      </div>
 
       {/* Admin Matches List */}
       <div className="space-y-4 max-h-[500px] overflow-y-auto pr-1 custom-scrollbar">
