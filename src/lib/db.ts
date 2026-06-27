@@ -106,7 +106,7 @@ const INITIAL_MATCHES: Match[] = userMatchesInput.map(m => {
     actual_home_score,
     actual_away_score,
     status,
-    phase: "groups"
+    phase: "fase de grupos"
   };
 });
 

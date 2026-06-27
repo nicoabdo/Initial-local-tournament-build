@@ -325,7 +325,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
             {activeTab === "workspace" && (
               <PredictionWorkspace
                 users={db.users}
-                matches={db.matches.filter(m => m.phase === "groups")}
+                matches={db.matches.filter(m => m.phase === "fase de grupos")}
                 pointStructure={db.settings.pointStructure}
                 unsavedChanges={unsavedChanges}
                 onPredChange={handlePredChange}
@@ -340,7 +340,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
             {activeTab === "16avos" && (
               <PredictionWorkspace
                 users={db.users}
-                matches={db.matches.filter(m => m.phase === "16avos")}
+                matches={db.matches.filter(m => m.phase === "16 avos")}
                 pointStructure={db.settings.pointStructure}
                 unsavedChanges={unsavedChanges}
                 onPredChange={handlePredChange}

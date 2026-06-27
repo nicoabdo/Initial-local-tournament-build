@@ -16,7 +16,7 @@
       "actual_home_score": 2,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m2",
@@ -27,7 +27,7 @@
       "actual_home_score": 2,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m3",
@@ -38,7 +38,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m4",
@@ -49,7 +49,7 @@
       "actual_home_score": 4,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m5",
@@ -60,7 +60,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m6",
@@ -71,7 +71,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m7",
@@ -82,7 +82,7 @@
       "actual_home_score": 0,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m8",
@@ -93,7 +93,7 @@
       "actual_home_score": 2,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m9",
@@ -104,7 +104,7 @@
       "actual_home_score": 7,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m10",
@@ -115,7 +115,7 @@
       "actual_home_score": 2,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m11",
@@ -126,7 +126,7 @@
       "actual_home_score": 1,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m12",
@@ -137,7 +137,7 @@
       "actual_home_score": 5,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m13",
@@ -148,7 +148,7 @@
       "actual_home_score": 0,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m14",
@@ -159,7 +159,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m15",
@@ -170,7 +170,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m16",
@@ -181,7 +181,7 @@
       "actual_home_score": 2,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m17",
@@ -192,7 +192,7 @@
       "actual_home_score": 3,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m18",
@@ -203,7 +203,7 @@
       "actual_home_score": 1,
       "actual_away_score": 4,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m19",
@@ -214,7 +214,7 @@
       "actual_home_score": 3,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m20",
@@ -225,7 +225,7 @@
       "actual_home_score": 3,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m21",
@@ -236,7 +236,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m22",
@@ -247,7 +247,7 @@
       "actual_home_score": 4,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m23",
@@ -258,7 +258,7 @@
       "actual_home_score": 1,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m24",
@@ -269,7 +269,7 @@
       "actual_home_score": 1,
       "actual_away_score": 3,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m25",
@@ -280,7 +280,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m26",
@@ -291,7 +291,7 @@
       "actual_home_score": 4,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m27",
@@ -302,7 +302,7 @@
       "actual_home_score": 6,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m28",
@@ -313,7 +313,7 @@
       "actual_home_score": 1,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m29",
@@ -324,7 +324,7 @@
       "actual_home_score": 2,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m30",
@@ -335,7 +335,7 @@
       "actual_home_score": 0,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m31",
@@ -346,7 +346,7 @@
       "actual_home_score": 3,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m32",
@@ -357,7 +357,7 @@
       "actual_home_score": 0,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m33",
@@ -368,7 +368,7 @@
       "actual_home_score": 5,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m34",
@@ -379,7 +379,7 @@
       "actual_home_score": 2,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m35",
@@ -390,7 +390,7 @@
       "actual_home_score": 0,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m36",
@@ -401,7 +401,7 @@
       "actual_home_score": 0,
       "actual_away_score": 4,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m37",
@@ -412,7 +412,7 @@
       "actual_home_score": 4,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m38",
@@ -423,7 +423,7 @@
       "actual_home_score": 0,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m39",
@@ -434,7 +434,7 @@
       "actual_home_score": 2,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m40",
@@ -445,7 +445,7 @@
       "actual_home_score": 1,
       "actual_away_score": 3,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m41",
@@ -456,7 +456,7 @@
       "actual_home_score": 2,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m42",
@@ -467,7 +467,7 @@
       "actual_home_score": 3,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m43",
@@ -478,7 +478,7 @@
       "actual_home_score": 3,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m44",
@@ -489,7 +489,7 @@
       "actual_home_score": 1,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m45",
@@ -500,7 +500,7 @@
       "actual_home_score": 5,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m46",
@@ -511,7 +511,7 @@
       "actual_home_score": 0,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m47",
@@ -522,7 +522,7 @@
       "actual_home_score": 0,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m48",
@@ -533,7 +533,7 @@
       "actual_home_score": 1,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m49",
@@ -544,7 +544,7 @@
       "actual_home_score": 0,
       "actual_away_score": 3,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m50",
@@ -555,7 +555,7 @@
       "actual_home_score": 1,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m51",
@@ -566,7 +566,7 @@
       "actual_home_score": 2,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m52",
@@ -577,7 +577,7 @@
       "actual_home_score": 3,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m53",
@@ -588,7 +588,7 @@
       "actual_home_score": 3,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m54",
@@ -599,7 +599,7 @@
       "actual_home_score": 4,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m55",
@@ -610,7 +610,7 @@
       "actual_home_score": 3,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m56",
@@ -621,7 +621,7 @@
       "actual_home_score": 0,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m57",
@@ -632,7 +632,7 @@
       "actual_home_score": 0,
       "actual_away_score": 2,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m58",
@@ -643,7 +643,7 @@
       "actual_home_score": 2,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m59",
@@ -654,7 +654,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m60",
@@ -665,7 +665,7 @@
       "actual_home_score": 1,
       "actual_away_score": 3,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m61",
@@ -676,7 +676,7 @@
       "actual_home_score": 1,
       "actual_away_score": 4,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m62",
@@ -687,7 +687,7 @@
       "actual_home_score": 5,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m63",
@@ -698,7 +698,7 @@
       "actual_home_score": 0,
       "actual_away_score": 0,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m64",
@@ -709,7 +709,7 @@
       "actual_home_score": 0,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m65",
@@ -720,7 +720,7 @@
       "actual_home_score": 1,
       "actual_away_score": 1,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m66",
@@ -731,7 +731,7 @@
       "actual_home_score": 1,
       "actual_away_score": 5,
       "status": "finished",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m67",
@@ -742,7 +742,7 @@
       "actual_home_score": null,
       "actual_away_score": null,
       "status": "scheduled",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m68",
@@ -753,7 +753,7 @@
       "actual_home_score": null,
       "actual_away_score": null,
       "status": "scheduled",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m69",
@@ -764,7 +764,7 @@
       "actual_home_score": null,
       "actual_away_score": null,
       "status": "scheduled",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m70",
@@ -775,7 +775,7 @@
       "actual_home_score": null,
       "actual_away_score": null,
       "status": "scheduled",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m71",
@@ -786,7 +786,7 @@
       "actual_home_score": null,
       "actual_away_score": null,
       "status": "scheduled",
-      "phase": "groups"
+      "phase": "fase de grupos"
     },
     {
       "id": "m72",
@@ -797,7 +797,7 @@
       "actual_home_score": null,
       "actual_away_score": null,
       "status": "scheduled",
-      "phase": "groups"
+      "phase": "fase de grupos"
     }
   ],
   "users": [

@@ -61,12 +61,12 @@ export default function AdminResultsPanel({
     setAdminScores(initialScores);
   }, [matches]);
 
-  const [filterType, setFilterType] = useState<"all" | "groups" | "16avos">("all");
+  const [filterType, setFilterType] = useState<"all" | "fase de grupos" | "16 avos">("all");
 
   const filteredMatches = matches.filter(match => {
     if (filterType === "all") return true;
-    if (filterType === "groups") return match.phase === "groups";
-    return match.phase === "16avos";
+    if (filterType === "fase de grupos") return match.phase === "fase de grupos";
+    return match.phase === "16 avos";
   });
 
   const handleAdminScoreChange = (matchId: string, team: "home" | "away", val: string) => {
@@ -254,9 +254,9 @@ export default function AdminResultsPanel({
           All Matches
         </button>
         <button
-          onClick={() => setFilterType("groups")}
+          onClick={() => setFilterType("fase de grupos")}
           className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
-            filterType === "groups" 
+            filterType === "fase de grupos" 
               ? "border-amber-500 text-amber-600 font-bold"
               : "border-transparent text-slate-400 hover:text-slate-200"
           }`}
@@ -264,9 +264,9 @@ export default function AdminResultsPanel({
           Fase de grupos
         </button>
         <button
-          onClick={() => setFilterType("16avos")}
+          onClick={() => setFilterType("16 avos")}
           className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
-            filterType === "16avos" 
+            filterType === "16 avos" 
               ? "border-amber-500 text-amber-600 font-bold"
               : "border-transparent text-slate-400 hover:text-slate-200"
           }`}
