@@ -61,7 +61,14 @@ export default function AdminResultsPanel({
     setAdminScores(initialScores);
   }, [matches]);
 
-  const filteredMatches = matches;
+  const [filterType, setFilterType] = useState<"group" | "16avos">("group");
+
+  const filteredMatches = matches.filter(match => {
+    if (filterType === "group") {
+      return match.group_stage.toLowerCase().startsWith("group");
+    }
+    return match.group_stage.toLowerCase().includes("16");
+  });
 
   const handleAdminScoreChange = (matchId: string, team: "home" | "away", val: string) => {
     const current = adminScores[matchId] || { home: "", away: "", status: "scheduled" };
@@ -235,6 +242,29 @@ export default function AdminResultsPanel({
       )}
       </div>
 
+      {/* Sub-Filters Tabs */}
+      <div className="flex border-b border-slate-800/40">
+        <button
+          onClick={() => setFilterType("group")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            filterType === "group" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          All Matches
+        </button>
+        <button
+          onClick={() => setFilterType("16avos")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            filterType === "16avos" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          16 avos
+        </button>
+      </div>
 
       {/* Admin Matches List */}
       <div className="space-y-4 max-h-[500px] overflow-y-auto pr-1 custom-scrollbar">
