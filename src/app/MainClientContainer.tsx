@@ -259,7 +259,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
               }`}
             >
               <Eye className="w-4 h-4" />
-              Workspace
+              Fase de grupos
             </button>
             <button
               onClick={() => setActiveTab("16avos")}
