@@ -14,6 +14,7 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [standingsTab, setStandingsTab] = useState<"general" | "fase de grupos" | "16 avos">("general");
 
   useEffect(() => {
     if (isExpanded) {
@@ -26,10 +27,22 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
     };
   }, [isExpanded]);
 
-  // Sort users: 1. total_points desc, 2. accuracy % desc, 3. name asc
+  // Sort users: 1. displayPoints desc, 2. accuracy % desc, 3. name asc
   const sortedUsers = [...users].map(user => {
-    const totalPredicted = user.betting_scores.length;
-    const exactMatches = user.betting_scores.filter(pred => {
+    // Filter predictions based on selected standingsTab
+    const phasePredictions = user.betting_scores.filter(pred => {
+      const match = matches.find(m => m.id === pred.match_id);
+      if (!match) return false;
+      if (standingsTab === "general") return true;
+      return match.phase === standingsTab;
+    });
+
+    const totalPredicted = phasePredictions.length;
+    
+    // Sum points for these predictions
+    const points = phasePredictions.reduce((sum, pred) => sum + (pred.points_earned || 0), 0);
+
+    const exactMatches = phasePredictions.filter(pred => {
       const match = matches.find(m => m.id === pred.match_id);
       if (!match || match.status !== "finished") return false;
       return (
@@ -42,13 +55,14 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
 
     return {
       ...user,
+      displayPoints: points,
       totalPredicted,
       exactMatches,
       accuracy
     };
   }).sort((a, b) => {
-    if (b.total_points !== a.total_points) {
-      return b.total_points - a.total_points;
+    if (b.displayPoints !== a.displayPoints) {
+      return b.displayPoints - a.displayPoints;
     }
     if (b.accuracy !== a.accuracy) {
       return b.accuracy - a.accuracy;
@@ -60,6 +74,10 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
   const filteredUsers = sortedUsers.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const selectedUserDisplay = selectedUser
+    ? sortedUsers.find(u => u.id === selectedUser.id)
+    : null;
 
   return (
     <div className={
@@ -102,6 +120,40 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
             {isExpanded ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
           </button>
         </div>
+      </div>
+
+      {/* Sub-Filters Tabs */}
+      <div className="flex border-b border-slate-800/40 mb-6">
+        <button
+          onClick={() => setStandingsTab("general")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            standingsTab === "general" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          General
+        </button>
+        <button
+          onClick={() => setStandingsTab("fase de grupos")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            standingsTab === "fase de grupos" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          Fase de grupos
+        </button>
+        <button
+          onClick={() => setStandingsTab("16 avos")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            standingsTab === "16 avos" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          16 avos
+        </button>
       </div>
 
       {/* Leaderboard Table Container */}
@@ -158,7 +210,7 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
                       </span>
                     </td>
                     <td className="py-4 pr-4 text-right font-bold text-slate-100 text-base">
-                      {user.total_points}
+                      {user.displayPoints}
                       <span className="text-xs font-normal text-slate-500 ml-1">pts</span>
                     </td>
                   </tr>
@@ -202,36 +254,32 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
             <div className="grid grid-cols-3 gap-4 p-6 bg-slate-950/40 border-b border-slate-800/80 text-center">
               <div className="bg-slate-900/40 p-3 rounded-xl border border-slate-800/50">
                 <span className="block text-xs text-slate-400 uppercase tracking-wide mb-1">Total Points</span>
-                <span className="text-xl font-bold text-slate-100">{selectedUser.total_points}</span>
+                <span className="text-xl font-bold text-slate-100">{selectedUserDisplay ? selectedUserDisplay.displayPoints : 0}</span>
               </div>
               <div className="bg-slate-900/40 p-3 rounded-xl border border-slate-800/50">
                 <span className="block text-xs text-slate-400 uppercase tracking-wide mb-1">Exact Hits</span>
                 <span className="text-xl font-bold text-emerald-400">
-                  {selectedUser.betting_scores.filter(pred => {
-                    const match = matches.find(m => m.id === pred.match_id);
-                    return match && match.status === "finished" && pred.predicted_home_score === match.actual_home_score && pred.predicted_away_score === match.actual_away_score;
-                  }).length}
+                  {selectedUserDisplay ? selectedUserDisplay.exactMatches : 0}
                 </span>
               </div>
               <div className="bg-slate-900/40 p-3 rounded-xl border border-slate-800/50">
                 <span className="block text-xs text-slate-400 uppercase tracking-wide mb-1">Accuracy</span>
                 <span className="text-xl font-bold text-blue-400">
-                  {(() => {
-                    const preds = selectedUser.betting_scores.length;
-                    const hits = selectedUser.betting_scores.filter(pred => {
-                      const match = matches.find(m => m.id === pred.match_id);
-                      return match && match.status === "finished" && pred.predicted_home_score === match.actual_home_score && pred.predicted_away_score === match.actual_away_score;
-                    }).length;
-                    return preds > 0 ? Math.round((hits / preds) * 100) : 0;
-                  })()}%
+                  {selectedUserDisplay ? selectedUserDisplay.accuracy : 0}%
                 </span>
               </div>
             </div>
 
             {/* Modal Body: Prediction Log */}
             <div className="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4">
-              {selectedUser.betting_scores.length > 0 ? (
-                [...selectedUser.betting_scores]
+              {selectedUserDisplay && selectedUserDisplay.betting_scores.length > 0 ? (
+                [...selectedUserDisplay.betting_scores]
+                  .filter(pred => {
+                    const match = matches.find(m => m.id === pred.match_id);
+                    if (!match) return false;
+                    if (standingsTab === "general") return true;
+                    return match.phase === standingsTab;
+                  })
                   .map(pred => {
                     const match = matches.find(m => m.id === pred.match_id);
                     return { pred, match };
