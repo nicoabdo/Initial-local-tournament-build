@@ -801,5 +801,82 @@
     "actual_away_score": null,
     "status": "scheduled",
     "phase": "16 avos"
+  },
+  {
+    "id": "m74",
+    "team_home": "Brasil",
+    "team_away": "Japón",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-29T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
+  },
+  {
+    "id": "m75",
+    "team_home": "Alemania",
+    "team_away": "Paraguay",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-29T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
+  },
+  {
+    "id": "m76",
+    "team_home": "Países Bajos",
+    "team_away": "Marruecos",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-29T21:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
+  },
+  {
+    "id": "m77",
+    "team_home": "Costa de Marfil",
+    "team_away": "Noruega",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-30T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
+  },
+  {
+    "id": "m78",
+    "team_home": "Francia",
+    "team_away": "Suecia",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-30T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
+  },
+  {
+    "id": "m79",
+    "team_home": "México",
+    "team_away": "Ecuador",
+    "group_stage": "16 avos",
+    "match_date": "2026-06-30T21:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
+  },
+  {
+    "id": "m80",
+    "team_home": "Inglaterra",
+    "team_away": "RD Congo",
+    "group_stage": "16 avos",
+    "match_date": "2026-07-01T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "16 avos"
   }
 ]
