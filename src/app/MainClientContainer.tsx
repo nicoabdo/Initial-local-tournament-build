@@ -198,7 +198,7 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
   const totalMatchesCount = db.matches.length;
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col">
+    <div className="min-h-screen text-slate-100 flex flex-col relative overflow-x-hidden w-full">
       {/* Background glow blur effects */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
