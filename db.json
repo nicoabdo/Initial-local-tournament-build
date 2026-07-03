@@ -1515,7 +1515,7 @@
     {
       "id": "ely",
       "name": "ELY",
-      "total_points": 59,
+      "total_points": 61,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -2011,37 +2011,37 @@
         },
         {
           "match_id": "m83",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 0
-        },
-        {
-          "match_id": "m84",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 0
-        },
-        {
-          "match_id": "m85",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
-          "points_earned": 0
-        },
-        {
-          "match_id": "m86",
-          "predicted_home_score": 0,
-          "predicted_away_score": 0,
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
           "points_earned": 1
         },
         {
-          "match_id": "m87",
-          "predicted_home_score": 0,
+          "match_id": "m84",
+          "predicted_home_score": 3,
+          "predicted_away_score": 2,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m85",
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
+          "points_earned": 1
+        },
+        {
+          "match_id": "m86",
+          "predicted_home_score": 1,
           "predicted_away_score": 0,
+          "points_earned": 0
+        },
+        {
+          "match_id": "m87",
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
           "points_earned": null
         },
         {
           "match_id": "m88",
-          "predicted_home_score": 0,
+          "predicted_home_score": 2,
           "predicted_away_score": 0,
           "points_earned": null
         }
