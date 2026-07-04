@@ -14,7 +14,7 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
-  const [standingsTab, setStandingsTab] = useState<"general" | "fase de grupos" | "16 avos">("general");
+  const [standingsTab, setStandingsTab] = useState<"general" | "fase de grupos" | "16 avos" | "8 vos">("general");
 
   useEffect(() => {
     if (isExpanded) {
@@ -153,6 +153,16 @@ export default function Leaderboard({ users, matches, pointStructure }: Leaderbo
           }`}
         >
           16 avos
+        </button>
+        <button
+          onClick={() => setStandingsTab("8 vos")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            standingsTab === "8 vos" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          8 vos
         </button>
       </div>
 

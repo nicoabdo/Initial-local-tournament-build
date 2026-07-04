@@ -61,12 +61,13 @@ export default function AdminResultsPanel({
     setAdminScores(initialScores);
   }, [matches]);
 
-  const [filterType, setFilterType] = useState<"all" | "fase de grupos" | "16 avos">("all");
+  const [filterType, setFilterType] = useState<"all" | "fase de grupos" | "16 avos" | "8 vos">("all");
 
   const filteredMatches = matches.filter(match => {
     if (filterType === "all") return true;
     if (filterType === "fase de grupos") return match.phase === "fase de grupos";
-    return match.phase === "16 avos";
+    if (filterType === "16 avos") return match.phase === "16 avos";
+    return match.phase === "8 vos";
   });
 
   const handleAdminScoreChange = (matchId: string, team: "home" | "away", val: string) => {
@@ -272,6 +273,16 @@ export default function AdminResultsPanel({
           }`}
         >
           16 avos
+        </button>
+        <button
+          onClick={() => setFilterType("8 vos")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            filterType === "8 vos" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          8 vos
         </button>
       </div>
 

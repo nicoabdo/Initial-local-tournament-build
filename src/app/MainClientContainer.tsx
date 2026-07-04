@@ -28,8 +28,8 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
     initialDb.users.length > 0 ? initialDb.users[0].id : ""
   );
 
-  // Layout Tab: 'workspace' (User Prediction Workspace) | '16avos' (16 Avos Phase) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
-  const [activeTab, setActiveTab] = useState<"workspace" | "16avos" | "admin" | "standings" | "statistics">("workspace");
+  // Layout Tab: 'workspace' (User Prediction Workspace) | '16avos' (16 Avos Phase) | '8vos' (8 Vos Phase) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
+  const [activeTab, setActiveTab] = useState<"workspace" | "16avos" | "8vos" | "admin" | "standings" | "statistics">("workspace");
 
   // Centralized cache of unsaved predictions: Record<userId, Record<matchId, {home, away}>>
   const [unsavedChanges, setUnsavedChanges] = useState<Record<string, Record<string, { home: number; away: number }>>>({});
@@ -273,6 +273,17 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
               16 avos
             </button>
             <button
+              onClick={() => setActiveTab("8vos")}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
+                activeTab === "8vos"
+                  ? "bg-indigo-500 text-slate-50 shadow-lg shadow-indigo-500/10"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <Compass className="w-4 h-4" />
+              8 vos
+            </button>
+            <button
               onClick={() => setActiveTab("admin")}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
                 activeTab === "admin"
@@ -350,6 +361,21 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
                 saveSuccess={saveSuccess}
                 title="16 Avos Predictions Grid"
                 subTitle="View & edit all participant predictions for the 16 Avos phase"
+              />
+            )}
+            {activeTab === "8vos" && (
+              <PredictionWorkspace
+                users={db.users}
+                matches={db.matches.filter(m => m.phase === "8 vos")}
+                pointStructure={db.settings.pointStructure}
+                unsavedChanges={unsavedChanges}
+                onPredChange={handlePredChange}
+                onSavePredictions={handleSavePredictions}
+                onClearLocalChanges={() => setUnsavedChanges({})}
+                isSaving={isSaving}
+                saveSuccess={saveSuccess}
+                title="8 Vos Predictions Grid"
+                subTitle="View & edit all participant predictions for the 8 Vos phase"
               />
             )}
             {activeTab === "admin" && (
