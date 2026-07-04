@@ -966,5 +966,93 @@
     "actual_away_score": null,
     "status": "scheduled",
     "phase": "16 avos"
+  },
+  {
+    "id": "m89",
+    "team_home": "Canadá",
+    "team_away": "Marruecos",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-04T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m90",
+    "team_home": "Francia",
+    "team_away": "Paraguay",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-04T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m91",
+    "team_home": "Brasil",
+    "team_away": "Noruega",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-05T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m92",
+    "team_home": "México",
+    "team_away": "Inglaterra",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-05T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m93",
+    "team_home": "Portugal",
+    "team_away": "España",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-06T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m94",
+    "team_home": "Estados Unidos",
+    "team_away": "Bélgica",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-06T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m95",
+    "team_home": "Argentina",
+    "team_away": "Egipto",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-07T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
+  },
+  {
+    "id": "m96",
+    "team_home": "Suiza",
+    "team_away": "Colombia",
+    "group_stage": "8 vos",
+    "match_date": "2026-07-07T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "8 vos"
   }
 ]
