@@ -1054,5 +1054,49 @@
     "actual_away_score": null,
     "status": "scheduled",
     "phase": "8 vos"
+  },
+  {
+    "id": "m97",
+    "team_home": "Francia",
+    "team_away": "Marruecos",
+    "group_stage": "4 tos",
+    "match_date": "2026-07-10T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "4 tos"
+  },
+  {
+    "id": "m98",
+    "team_home": "España",
+    "team_away": "Bélgica",
+    "group_stage": "4 tos",
+    "match_date": "2026-07-10T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "4 tos"
+  },
+  {
+    "id": "m99",
+    "team_home": "Noruega",
+    "team_away": "Inglaterra",
+    "group_stage": "4 tos",
+    "match_date": "2026-07-11T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "4 tos"
+  },
+  {
+    "id": "m100",
+    "team_home": "Argentina",
+    "team_away": "Suiza",
+    "group_stage": "4 tos",
+    "match_date": "2026-07-11T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "4 tos"
   }
 ]
