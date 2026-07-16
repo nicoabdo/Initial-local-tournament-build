@@ -61,7 +61,7 @@ export default function AdminResultsPanel({
     setAdminScores(initialScores);
   }, [matches]);
 
-  const [filterType, setFilterType] = useState<"all" | "fase de grupos" | "16 avos" | "8 vos" | "4 tos" | "Semi finals">("all");
+  const [filterType, setFilterType] = useState<"all" | "fase de grupos" | "16 avos" | "8 vos" | "4 tos" | "Semi finals" | "Finals">("all");
 
   const filteredMatches = matches.filter(match => {
     if (filterType === "all") return true;
@@ -69,7 +69,8 @@ export default function AdminResultsPanel({
     if (filterType === "16 avos") return match.phase === "16 avos";
     if (filterType === "8 vos") return match.phase === "8 vos";
     if (filterType === "4 tos") return match.phase === "4 tos";
-    return match.phase === "Semi finals";
+    if (filterType === "Semi finals") return match.phase === "Semi finals";
+    return match.phase === "Finals";
   });
 
   const handleAdminScoreChange = (matchId: string, team: "home" | "away", val: string) => {
@@ -305,6 +306,16 @@ export default function AdminResultsPanel({
           }`}
         >
           Semi finals
+        </button>
+        <button
+          onClick={() => setFilterType("Finals")}
+          className={`px-4 py-2 border-b-2 font-semibold text-sm transition-colors relative -mb-[2px] cursor-pointer ${
+            filterType === "Finals" 
+              ? "border-amber-500 text-amber-600 font-bold"
+              : "border-transparent text-slate-400 hover:text-slate-200"
+          }`}
+        >
+          Finals
         </button>
       </div>
 
