@@ -28,8 +28,8 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
     initialDb.users.length > 0 ? initialDb.users[0].id : ""
   );
 
-  // Layout Tab: 'workspace' (User Prediction Workspace) | '16avos' (16 Avos Phase) | '8vos' (8 Vos Phase) | '4tos' (4 Tos Phase) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
-  const [activeTab, setActiveTab] = useState<"workspace" | "16avos" | "8vos" | "4tos" | "admin" | "standings" | "statistics">("workspace");
+  // Layout Tab: 'workspace' (User Prediction Workspace) | '16avos' (16 Avos Phase) | '8vos' (8 Vos Phase) | '4tos' (4 Tos Phase) | 'semifinals' (Semi finals Phase) | 'admin' (Admin Results Panel) | 'standings' (Family Standings) | 'statistics' (Match Analytics)
+  const [activeTab, setActiveTab] = useState<"workspace" | "16avos" | "8vos" | "4tos" | "semifinals" | "admin" | "standings" | "statistics">("workspace");
 
   // Centralized cache of unsaved predictions: Record<userId, Record<matchId, {home, away}>>
   const [unsavedChanges, setUnsavedChanges] = useState<Record<string, Record<string, { home: number; away: number }>>>({});
@@ -294,6 +294,17 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
                <Compass className="w-4 h-4" />
                4 tos
              </button>
+             <button
+               onClick={() => setActiveTab("semifinals")}
+               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
+                 activeTab === "semifinals"
+                   ? "bg-indigo-500 text-slate-50 shadow-lg shadow-indigo-500/10"
+                   : "text-slate-400 hover:text-slate-200"
+               }`}
+             >
+               <Compass className="w-4 h-4" />
+               Semi finals
+             </button>
             <button
               onClick={() => setActiveTab("admin")}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-155 cursor-pointer whitespace-nowrap ${
@@ -404,6 +415,21 @@ export default function MainClientContainer({ initialDb }: MainClientContainerPr
                  subTitle="View & edit all participant predictions for the 4 Tos phase"
                />
              )}
+             {activeTab === "semifinals" && (
+                <PredictionWorkspace
+                  users={db.users}
+                  matches={db.matches.filter(m => m.phase === "Semi finals")}
+                  pointStructure={db.settings.pointStructure}
+                  unsavedChanges={unsavedChanges}
+                  onPredChange={handlePredChange}
+                  onSavePredictions={handleSavePredictions}
+                  onClearLocalChanges={() => setUnsavedChanges({})}
+                  isSaving={isSaving}
+                  saveSuccess={saveSuccess}
+                  title="Semi Finals Predictions Grid"
+                  subTitle="View & edit all participant predictions for the Semi Finals phase"
+                />
+              )}
             {activeTab === "admin" && (
               <AdminResultsPanel
                 users={db.users}
