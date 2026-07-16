@@ -1106,6 +1106,28 @@
       "actual_away_score": 1,
       "status": "finished",
       "phase": "4 tos"
+    },
+    {
+      "id": "m101",
+      "team_home": "España",
+      "team_away": "Francia",
+      "group_stage": "Semi finals",
+      "match_date": "2026-07-16T15:00:00Z",
+      "actual_home_score": null,
+      "actual_away_score": null,
+      "status": "scheduled",
+      "phase": "Semi finals"
+    },
+    {
+      "id": "m102",
+      "team_home": "Argentina",
+      "team_away": "Inglaterra",
+      "group_stage": "Semi finals",
+      "match_date": "2026-07-16T18:00:00Z",
+      "actual_home_score": null,
+      "actual_away_score": null,
+      "status": "scheduled",
+      "phase": "Semi finals"
     }
   ],
   "users": [
@@ -1713,6 +1735,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -2320,6 +2354,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 2,
           "points_earned": 0
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -2927,6 +2973,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 0,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -3534,6 +3592,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -4141,6 +4211,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 0,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -4748,6 +4830,18 @@
           "predicted_home_score": 3,
           "predicted_away_score": 1,
           "points_earned": 2
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -5355,6 +5449,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -5962,6 +6068,18 @@
           "predicted_home_score": 3,
           "predicted_away_score": 0,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -6569,6 +6687,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -7176,6 +7306,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -7783,6 +7925,18 @@
           "predicted_home_score": 3,
           "predicted_away_score": 2,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -8390,6 +8544,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -8997,6 +9163,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -9604,6 +9782,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -10211,6 +10401,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -10818,6 +11020,18 @@
           "predicted_home_score": 2,
           "predicted_away_score": 1,
           "points_earned": 1
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     },
@@ -11425,6 +11639,18 @@
           "predicted_home_score": 3,
           "predicted_away_score": 1,
           "points_earned": 2
+        },
+        {
+          "match_id": "m101",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
+        },
+        {
+          "match_id": "m102",
+          "predicted_home_score": 0,
+          "predicted_away_score": 0,
+          "points_earned": null
         }
       ]
     }
