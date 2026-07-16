@@ -1120,5 +1120,27 @@
     "actual_away_score": null,
     "status": "scheduled",
     "phase": "Semi finals"
+  },
+  {
+    "id": "m103",
+    "team_home": "España",
+    "team_away": "Argentina",
+    "group_stage": "Finals",
+    "match_date": "2026-07-19T18:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "Finals"
+  },
+  {
+    "id": "m104",
+    "team_home": "Francia",
+    "team_away": "Inglaterra",
+    "group_stage": "Finals",
+    "match_date": "2026-07-19T15:00:00Z",
+    "actual_home_score": null,
+    "actual_away_score": null,
+    "status": "scheduled",
+    "phase": "Finals"
   }
 ]
