@@ -8097,7 +8097,7 @@
     {
       "id": "kyke",
       "name": "KYKE",
-      "total_points": 82,
+      "total_points": 83,
       "betting_scores": [
         {
           "match_id": "m1",
@@ -8713,9 +8713,9 @@
         },
         {
           "match_id": "m103",
-          "predicted_home_score": 1,
-          "predicted_away_score": 2,
-          "points_earned": 0
+          "predicted_home_score": 2,
+          "predicted_away_score": 1,
+          "points_earned": 1
         },
         {
           "match_id": "m104",
